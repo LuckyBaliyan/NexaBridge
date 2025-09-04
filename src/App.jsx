@@ -1,17 +1,28 @@
 import React from 'react'
-import useLenis from './hooks/lenis/useLenis'
 import './Global.css'
-import Hero from './components/sections/Hero';
+import Transition from './animations/pageTransitions/Transition';
+import Home from './pages/comman/Home';
+import { Route, Routes } from 'react-router-dom';
+import MainLayout from './layouts/MainLayout';
+import Login from './components/auth/Login';
+import useLenis from './hooks/lenis/useLenis';
 
 const App = () => {
+
+
   {/*Initailize Lenis for smooth scrolling Effect */}
   useLenis();
 
   return (
-    <main>
-     <Hero />
-    </main>
+    <Routes>
+       <Route  element={<MainLayout/>}>
+            <Route path='/' element={<Home />} />
+       </Route>
+       <Route>
+           <Route path='/login' element={<Login/>} />
+       </Route>
+    </Routes>
   )
 }
 
-export default App
+export default Transition(App);

@@ -2,13 +2,13 @@ import { useEffect, useRef } from 'react';
 import Lenis from 'lenis';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/all';
-//import { useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const useLenis = () => {
   const lenisRef = useRef(null);
-  //const location = useLocation();
+  const location = useLocation();
 
   useEffect(() => {
     const lenis = new Lenis({
@@ -18,7 +18,7 @@ const useLenis = () => {
 
     lenisRef.current = lenis;
 
-    lenis?.scrollTo(0,{offset:0,duration:1});
+    lenis?.scrollTo(0,{immediate:true});
 
     const raf = (time) => {
       lenis.raf(time * 1000);
@@ -32,7 +32,7 @@ const useLenis = () => {
       gsap.ticker.remove(raf);
       lenis.destroy();
     };
-  }, []);
+  }, [location.pathname]);
 };
 
 export default useLenis;
