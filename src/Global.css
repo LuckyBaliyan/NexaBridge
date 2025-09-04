@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+body{
+    overflow-x: hidden;
+    background-color: var(--BackgroundPrimary);
+}
+
+/** Comman class setup  for same fonts **/
+
+@font-face {
+    font-family: 'inter-black';
+    src: url('/fonts/Inter-Black.woff2');
+}
+
+@font-face {
+    font-family: 'inter-medium';
+    src: url('/fonts/Inter-Medium.woff2');
+}
+
+@font-face {
+    font-family: 'inter-regular';
+    src: url('/fonts/Inter-Regular.woff2');
+}
+
+@font-face {
+    font-family:'nunito-regular';
+    src: url('/fonts/Nunito-Regular.woff2'),
+         url('/fonts/Nunito-Regular.woff');
+}
+
+@font-face {
+    font-family: 'nunito-medium';
+    src: url('/fonts/Nunito-Medium.woff2'),
+         url('/fonts/Nunito-Medium.woff');
+}
+
+:root{
+    --BackgroundPrimary: #0A0A0A;
+    --BackgroundCards: #121212;
+    --Accent: #C9A66B;
+    --AccentHover: #A67C2B;
+    --TextPrimary: #F5F5F5;
+    --Text: #AEB6BD;
+    --Borders: #1F1F1F;
+    --SuccessState: #16A34A;
+    --WarningHighlig: #F59E0B;
+}
+
+@layer base{
+  h1{
+    @apply font-[inter-black] text-[var(--TextPrimary)] text-9xl;
+  }
+  p{
+    @apply font-[nunito-regular] text-[var(--Text)];
+  }
+  video{
+    @apply w-full h-full object-cover absolute top-0 left-0;
+  }
+}
+
+@layer utilities{
+   .overlay{
+    @apply absolute top-0 left-0 w-full h-screen z-30;
+   }
+}
