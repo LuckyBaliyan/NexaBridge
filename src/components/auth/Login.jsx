@@ -20,7 +20,7 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
   const [currentState, setCurrentState] = useState("Login");
-
+  const [valid,setValid] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -72,6 +72,10 @@ const Login = () => {
     setFormData((s) => ({ ...s, [name]: value }));
 
     if (name === "password") checkPassword(value);
+    
+    if (name === "email") {
+      setValid(validateEmailByRole(value, role));
+    }
   };
 
   // --- Password requirements labels ---
@@ -207,6 +211,9 @@ const Login = () => {
               className="w-full p-2 rounded-lg bg-[var(--BackgroundPrimary)] text-[var(--TextPrimary)] placeholder-[var(--Text)] focus:outline-none focus:ring-1 focus:ring-[var(--Accent)]"
             />
           </div>
+          {!valid && (
+            <p className="text-[var(--Text)] text-sm">Must in required formate...</p>
+          )}
 
           {/* Password */}
           <div>

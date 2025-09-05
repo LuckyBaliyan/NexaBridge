@@ -54,8 +54,11 @@ html,body{
   h1{
     @apply font-[inter-black] text-[var(--TextPrimary)] text-9xl;
   }
+  h4{
+    @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
+  }
   p{
-    @apply font-[nunito-regular] text-[var(--Text)];
+    @apply font-[nunito-regular] text-[#fff];
   }
   video{
     @apply w-full h-full object-cover absolute top-0 left-0;
@@ -67,16 +70,38 @@ html,body{
     @apply w-full min-h-screen;
   }
   nav{
-    @apply text-white flex justify-between w-full p-4 fixed top-0 left-0 z-50;
+    @apply text-white flex justify-between w-full p-2 md:p-4 fixed top-0 left-0 z-50;
   }
 }
 
 @layer utilities{
-   .overlay{
+  .overlay{
     @apply absolute top-0 left-0 w-full h-screen z-30;
-   }
-}
+  }
+  .links{
+    @apply md:flex gap-4 !text-white hidden; 
+  }
+  .mobile-links{
+    @apply absolute w-full top-0 px-4 py-12 left-0 translate-x-[100%] 
+    h-[100vh] z-50 bg-[var(--BackgroundCards)] will-change-transform  flex flex-col gap-2 md:hidden;
+  }
 
+  .mobile-links p{
+    @apply text-3xl font-[nunito-medium] font-bold;
+  }
+  .button{
+    @apply w-[100px] gap-2 md:gap-[20px] pl-[6px] md:pl-[8px] md:w-[110px] lg:w-[130px] text-sm md:text-base;
+  }
+  .svgIcon{
+    @apply h-[18px] md:h-[25px];
+  }
+  .mask{
+    @apply w-fit h-fit overflow-hidden;
+  }
+  .mask-para{
+    @apply  translate-y-[100%];
+  }
+}
 
 /* Comman btn styles */
 
@@ -85,7 +110,6 @@ html,body{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    gap: 20px;
     background-color: rgb(161, 255, 20);
     border-radius: 30px;
     color: rgb(19, 19, 19);
@@ -95,12 +119,10 @@ html,body{
     cursor: pointer;
     transition-duration: .2s;
     box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
-    padding-left: 8px;
     transition-duration: .5s;
   }
 
   .svgIcon {
-    height: 25px;
     transition-duration: 1.5s;
   }
 
