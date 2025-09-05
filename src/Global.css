@@ -95,7 +95,7 @@ html,body{
     @apply h-[18px] md:h-[25px];
   }
   .mask{
-    @apply w-fit h-fit overflow-hidden;
+    @apply overflow-hidden;
   }
   .mask-para{
     @apply  translate-y-[50%] opacity-0;

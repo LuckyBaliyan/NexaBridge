@@ -59,15 +59,14 @@ const Nav = () => {
             }
             </div>
             <div className='mobile-links'>
-                <NavLink to='/' className={({isActive})=>
-                `${isActive?'!text-[var(--Accent)]':''}`}
+                <NavLink to='/'
                 >
                     <div className="mask"><p className='mask-para'>Home</p></div>
                </NavLink>
                {
                 role &&
                 navLinks[role].map(link=>(
-                    <NavLink className={({isActive})=> `${isActive?'text-[var(--Accent)]':''}`} key={link.to} to={`${link.to}`}>
+                    <NavLink>
                         <div className="mask">
                         <p className='mask-para'>
                           {link.label} 
