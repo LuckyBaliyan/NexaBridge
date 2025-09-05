@@ -23,7 +23,6 @@ const Nav = () => {
         duration: 0.8,
       })
       .to(".mask-para", {
-        y: 0,
         opacity:1,
         ease: "power2.inOut",
         duration: 0.6,
@@ -61,17 +60,15 @@ const Nav = () => {
             <div className='mobile-links'>
                 <NavLink to='/'
                 >
-                    <div className="mask"><p className='mask-para'>Home</p></div>
+                    <p className='mask-para'>Home</p>
                </NavLink>
                {
                 role &&
                 navLinks[role].map(link=>(
-                    <NavLink>
-                        <div className="mask">
+                    <NavLink to={link.to} key={link.to}>
                         <p className='mask-para'>
                           {link.label} 
                         </p>
-                        </div>
                     </NavLink>
                 ))
             }

@@ -52,7 +52,7 @@ html,body{
 
 @layer base{
   h1{
-    @apply font-[inter-black] text-[var(--TextPrimary)] text-9xl;
+    @apply font-[inter-black] text-[var(--TextPrimary)] text-7xl md:text-8xl lg:text-9xl;
   }
   h4{
     @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
@@ -86,19 +86,13 @@ html,body{
     h-[100vh] z-50 bg-[var(--BackgroundCards)] will-change-transform  flex flex-col gap-2 md:hidden;
   }
   .mobile-links p{
-    @apply text-3xl font-[nunito-medium] font-bold;
+    @apply text-3xl font-[nunito-medium] font-bold opacity-0;
   }
   .button{
     @apply w-[100px] gap-2 md:gap-[20px] pl-[6px] md:pl-[8px] md:w-[110px] lg:w-[130px] text-sm md:text-base;
   }
   .svgIcon{
     @apply h-[18px] md:h-[25px];
-  }
-  .mask{
-    @apply overflow-hidden;
-  }
-  .mask-para{
-    @apply  translate-y-[50%] opacity-0;
   }
 }
 
