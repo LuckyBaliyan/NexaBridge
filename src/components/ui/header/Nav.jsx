@@ -60,13 +60,13 @@ const Nav = () => {
             <div className='mobile-links'>
                 <NavLink to='/'
                 >
-                    <p className='mask-para'>Home</p>
+                    <p className='mask-para opacity-0'>Home</p>
                </NavLink>
                {
                 role &&
                 navLinks[role].map(link=>(
                     <NavLink to={link.to} key={link.to}>
-                        <p className='mask-para'>
+                        <p className='mask-para text-white opacity-0'>
                           {link.label} 
                         </p>
                     </NavLink>

@@ -86,7 +86,7 @@ html,body{
     h-[100vh] z-50 bg-[var(--BackgroundCards)] will-change-transform  flex flex-col gap-2 md:hidden;
   }
   .mobile-links p{
-    @apply text-3xl font-[nunito-medium] font-bold opacity-0;
+    @apply text-3xl font-[nunito-medium] font-bold;
   }
   .button{
     @apply w-[100px] gap-2 md:gap-[20px] pl-[6px] md:pl-[8px] md:w-[110px] lg:w-[130px] text-sm md:text-base;
