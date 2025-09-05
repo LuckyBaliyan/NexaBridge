@@ -24,6 +24,7 @@ const Nav = () => {
       })
       .to(".mask-para", {
         y: 0,
+        opacity:1,
         ease: "power2.inOut",
         duration: 0.6,
         stagger: 0.1, 

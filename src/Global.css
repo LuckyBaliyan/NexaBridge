@@ -85,7 +85,6 @@ html,body{
     @apply absolute w-full top-0 px-4 py-12 left-0 translate-x-[100%] 
     h-[100vh] z-50 bg-[var(--BackgroundCards)] will-change-transform  flex flex-col gap-2 md:hidden;
   }
-
   .mobile-links p{
     @apply text-3xl font-[nunito-medium] font-bold;
   }
@@ -99,7 +98,7 @@ html,body{
     @apply w-fit h-fit overflow-hidden;
   }
   .mask-para{
-    @apply  translate-y-[100%];
+    @apply  translate-y-[50%] opacity-0;
   }
 }
 
