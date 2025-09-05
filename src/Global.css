@@ -41,8 +41,8 @@ html,body{
 :root{
     --BackgroundPrimary: #0A0A0A;
     --BackgroundCards: #121212;
-    --Accent: #C9A66B;
-    --AccentHover: #A67C2B;
+    --Accent: rgb(161, 255, 20);
+    --AccentHover: rgb(192, 255, 20);
     --TextPrimary: #F5F5F5;
     --Text: #AEB6BD;
     --Borders: #1F1F1F;
@@ -76,3 +76,73 @@ html,body{
     @apply absolute top-0 left-0 w-full h-screen z-30;
    }
 }
+
+
+/* Comman btn styles */
+
+.button {
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+    background-color: rgb(161, 255, 20);
+    border-radius: 30px;
+    color: rgb(19, 19, 19);
+    font-weight: 600;
+    border: none;
+    position: relative;
+    cursor: pointer;
+    transition-duration: .2s;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
+    padding-left: 8px;
+    transition-duration: .5s;
+  }
+
+  .svgIcon {
+    height: 25px;
+    transition-duration: 1.5s;
+  }
+
+  .bell path {
+    fill: rgb(19, 19, 19);
+  }
+
+  .button:hover {
+    background-color: rgb(192, 255, 20);
+    transition-duration: .5s;
+  }
+
+  .button:active {
+    transform: scale(0.97);
+    transition-duration: .2s;
+  }
+
+  .button:hover .svgIcon {
+    transform: rotate(250deg);
+    transition-duration: 1.5s;
+  }
+
+  .form{
+    /*background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);*/
+    background: var(--BackgroundCards);
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(201, 166, 107, 0.15); /* subtle shadow */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* faint border */
+    position: relative;
+  }
+
+  
+.form::before {
+  content: '';
+  position: absolute;
+  inset: -4px; /* offset border */
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.05); /* faint glow color */
+  z-index: -1;
+  filter: blur(12px); /* glow effect */
+}
+
+/* comman card styles */
+

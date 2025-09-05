@@ -4,14 +4,15 @@ import Nav from '../components/ui/header/Nav';
 import Footer from '../components/ui/footer/Footer';
 import { Outlet } from 'react-router-dom';
 
+
 const MainLayout = () => {
 
   return (
     <>
       <Nav/>
-      <main>
-        <Outlet />
-      </main>
+          <main>
+             <Outlet/>
+          </main>
       <Footer />
     </>
   )
