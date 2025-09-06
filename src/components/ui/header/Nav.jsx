@@ -88,7 +88,7 @@ const Nav = () => {
             }
             </div>
             {/** Later add a profile pic on clicking we get to profile page */}
-            <div className='scale-80 -ml-10 md:-ml-0 md:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] md:translate-x-0 md:scale-100'>
+            <div className='scale-80 -ml-2 md:-ml-0 md:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] md:translate-x-0 md:scale-100'>
             {role?(
                 <Button text='logout' onClick={logout} className='bg-[var(--Accent)] text-white'/>
             ):(
