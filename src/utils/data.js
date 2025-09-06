@@ -1,4 +1,4 @@
-import { FaUserGroup, FaBriefcase, FaHandshake } from "react-icons/fa";
+import { FaUsers, FaBriefcase, FaHandshake } from "react-icons/fa";
 
 const navLinks = {
   student: [
@@ -19,7 +19,7 @@ const navLinks = {
 const showCards = [
   {
     id: 1,
-    icon: FaUserGroup,
+    icon: FaUsers,
     heading: "Alumni Engagement",
     para: "Maintain strong connections with alumni through events, news, and updates.",
   },
