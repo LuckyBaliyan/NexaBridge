@@ -46,10 +46,10 @@ const Nav = () => {
             <div className='flex items-center justify-center gap-6'>
             <NavLink to='/'>
                <div className="content-wrapper flex items-center gap-1 md:gap-4 p-2">
-                    <div className="logo-wrapper border-2 border-[var(--Accent)] z-[20] h-8 w-8 scale-90 md:scale-100 md:w-12 md:h-12  rounded-full overflow-hidden flex justify-center items-center ">
+                    <div className="logo-wrapper border-2 border-[var(--Accent)] z-[20] h-10 w-10 scale-100 md:scale-100 md:w-12 md:h-12  rounded-full overflow-hidden flex justify-center items-center ">
                     <img src="/images/logo.svg" alt="" />
                     </div>
-                    <div className="logo-wrapper absolute top-2 left-6 md:top-4 md:left-10 h-8 w-8 scale-90 md:scale-100 md:w-12 md:h-12  
+                    <div className="logo-wrapper absolute top-2 left-6 md:top-4 md:left-10 h-10 w-10 scale-100 md:scale-100 md:w-12 md:h-12  
                     rounded-full overflow-hidden flex justify-center items-center 
                     bg-gray-100 border-2">
                     <img src="/images/mainLogo.png" alt="" />
@@ -57,8 +57,8 @@ const Nav = () => {
                </div>
             </NavLink>
             <div className='md:ml-6 flex flex-col gap-0'>
-                <p className='text-[12px] md:text-sm leading-[0.75] font-bold text-black rounded p-1'>Punjab Govt Initaitive</p>
-                <p className='text-[12px] md:text-sm leading-[0.75] font-extrabold text-black rounded p-1 uppercase'>Nexa Bridge</p>
+                <p className='text-base md:text-sm leading-[0.75] font-bold text-black rounded p-1'>Punjab Govt Initaitive</p>
+                <p className='text-base md:text-sm leading-[0.75] font-extrabold text-black rounded p-1 uppercase'>Nexa Bridge</p>
             </div>
             </div>
             <div className='links'>
@@ -86,9 +86,21 @@ const Nav = () => {
                     </NavLink>
                 ))
             }
+             {role?(
+               <p onClick={logout} className='mask-para opacity-0'>Logout</p>
+            ):(
+                <>
+                <Link to='/login' state={{currentState:'Login'}}>
+                    <p className='mask-para opacity-0'>Login</p>
+                </Link>
+                <Link to='/login' state={{currentState:'SignUp'}}>
+                   <p className='mask-para opacity-0'>SignUp</p>
+                </Link>
+                </>
+            )}
             </div>
             {/** Later add a profile pic on clicking we get to profile page */}
-            <div className='scale-80 -ml-8 sm:-ml-2 md:-ml-0 md:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] md:translate-x-0 md:scale-100'>
+            <div className='scale-80 hidden -ml-8 sm:-ml-2 md:-ml-0 md:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] md:translate-x-0 md:scale-100'>
             {role?(
                 <Button text='logout' onClick={logout} className='bg-[var(--Accent)] text-white'/>
             ):(
