@@ -65,7 +65,7 @@ html,body{
 
 @layer base{
   h1{
-    @apply font-[inter-black] text-[var(--TextPrimary)] text-7xl md:text-8xl lg:text-9xl;
+    @apply font-[inter-black] text-[var(--TextPrimary)] text-6xl md:text-8xl lg:text-9xl;
   }
   h4{
     @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
@@ -109,7 +109,7 @@ html,body{
     @apply bg-[var(--BackgroundPrimary)];
   }
   .button{
-    @apply  px-6 py-1 rounded-full cursor-pointer active:scale-95 shadow-2xl
+    @apply py-2 px-8 whitespace-nowrap scale-90 md:py-3 md:px-12 text-center rounded-full cursor-pointer active:scale-95 shadow;
   }
 
 }

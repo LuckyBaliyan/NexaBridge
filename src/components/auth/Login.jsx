@@ -255,7 +255,7 @@ const Login = () => {
 
           {/* Button */}
         <div className="w-full flex justify-center">       
-          <Button type='submit' text={currentState} className="w-[130px] bg-[var(--Accent)] text-[#fff]"/>
+          <Button type='submit' text={currentState} className=" bg-[var(--Accent)] text-[#fff]"/>
         </div>
  
           {/* Switch between Login & Signup */}

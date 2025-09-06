@@ -57,8 +57,8 @@ const Nav = () => {
                </div>
             </NavLink>
             <div className='md:ml-6 flex flex-col gap-0'>
-                <p className='text-base md:text-sm leading-[0.75] font-bold text-black rounded p-1'>Punjab Govt Initaitive</p>
-                <p className='text-base md:text-sm leading-[0.75] font-extrabold text-black rounded p-1 uppercase'>Nexa Bridge</p>
+                <p className='text-base  leading-[0.75] font-bold text-black rounded p-1'>Punjab Govt Initaitive</p>
+                <p className='text-base  leading-[0.75] font-extrabold text-black rounded p-1 uppercase'>Nexa Bridge</p>
             </div>
             </div>
             <div className='links'>
@@ -106,7 +106,8 @@ const Nav = () => {
             ):(
                 <>
                 <Link to='/login' state={{currentState:'Login'}}>
-                    <Button text='login' className='bg-gray-300 text-black'/>
+                    <Button text='login' className='ml-2  border border-gray-300 
+                   text-gray-700 py-3 px-6 rounded-md'/>
                 </Link>
                 <Link to='/login' state={{currentState:'SignUp'}}>
                    <Button text='SignUp' className='bg-[var(--Accent)] text-[#fff] hidden md:block' />
