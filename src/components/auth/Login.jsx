@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthProvider.jsx";
 import { useNavigate } from "react-router-dom";
-import Transition from "../../animations/pageTransitions/Transition.jsx";
 import { toast } from "react-toastify";
 import Button from "../ui/Buttons/Mainbtn.jsx";
 import { useLocation } from "react-router-dom";

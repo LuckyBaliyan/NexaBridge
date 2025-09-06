@@ -1,4 +1,14 @@
-import { FaUsers, FaBriefcase, FaHandshake } from "react-icons/fa";
+import { 
+  FaUsers, 
+  FaBriefcase, 
+  FaHandshake, 
+  FaCalendarAlt,
+  FaAddressBook,
+  FaComments,
+  FaCamera,
+  FaNewspaper,
+  FaHandHoldingHeart, 
+} from "react-icons/fa";
 
 const navLinks = {
   student: [
@@ -37,4 +47,43 @@ const showCards = [
   },
 ];
 
-export {navLinks,showCards};
+const featuresData = [
+  {
+    id: 1,
+    icon: FaCalendarAlt,
+    heading: "Event Management",
+    para: "Organize reunions, virtual meetups, fundraising events, and webinars.",
+  },
+  {
+    id: 2,
+    icon: FaAddressBook,
+    heading: "Alumni Directory",
+    para: "A searchable directory to easily connect, find, and collaborate with alumni.",
+  },
+  {
+    id: 3,
+    icon: FaComments,
+    heading: "Messaging & Calls",
+    para: "Connect with others and schedule calls between alumni and students.",
+  },
+  {
+    id: 4,
+    icon: FaCamera,
+    heading: "Photo Galleries",
+    para: "Dedicated photo albums for alumni (and students) to relive memories.",
+  },
+  {
+    id: 5,
+    icon: FaNewspaper,
+    heading: "News & Updates",
+    para: "Keep your alumni informed with the latest news from your institution.",
+  },
+  {
+    id: 6,
+    icon: FaHandHoldingHeart,
+    heading: "Giving Back",
+    para: "Facilitate donation and fundraising campaigns to support your institution.",
+  },
+];
+
+export {navLinks,showCards,featuresData};

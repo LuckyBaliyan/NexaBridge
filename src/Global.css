@@ -52,13 +52,14 @@ html,body{
 
 :root {
   --BackgroundPrimary:#f0f6ff;  
+  --oldBorder:#e2e8f0;
   --BackgroundSecondary: #ffffff; 
   --TextPrimary: #0f172a;
   --Text: #334155;     
   --TextNav:#121212;    
   --Accent: #2563eb;      
   --AccentHover: #1d4ed8;  
-  --Border: #e2e8f0;      
+  --Border: #d3d9e1;      
   --Shadow: 0 2px 8px rgba(0,0,0,0.05);
   --logoAccent:#1B4260;
   --TextLight: #333435;     
@@ -82,6 +83,9 @@ html,body{
   }
   section{
     @apply w-full min-h-screen bg-[var(--BackgroundPrimary)];
+  }
+  section.even{
+    @apply bg-[var(--BackgroundSecondary)];
   }
   nav{
     @apply text-[var(--TextNav)] bg-[var(--BackgroundSecondary)] flex justify-between items-center w-full p-0 md:p-2
@@ -123,8 +127,9 @@ html,body{
 
 @layer components{
   .showCard{
-    @apply bg-[var(--BackgroundSecondary)] flex flex-col items-center space-y-6 md:py-32 cursor-pointer lg:py-16 py-16 px-4 rounded-lg
-    shadow transition-all w-full hover:shadow-lg flex-1 hover:-translate-z-4 hover:scale-y-104 hover:-rotate-z-3 origin-left;
+    @apply bg-[#C4B3FF] flex flex-col items-center space-y-6 md:py-32 cursor-pointer lg:py-16 py-16 px-4 rounded-lg
+    shadow transition-all w-full hover:shadow-lg flex-1 hover:-translate-z-4 hover:scale-y-104 hover:-rotate-z-3 origin-left
+    border border-[var(--oldBorder)];
   }
   .showCard h5{
     @apply text-[var(--TextNav)] text-center font-bold font-[inter-black] text-2xl;
@@ -134,6 +139,17 @@ html,body{
   }
   .btnSec{
     @apply border bg-[var(--TextLight)]  border-gray-300  text-white;
+  }
+
+  .featureCard{
+    @apply snap-center flex-shrink-0 flex flex-col items-center border border-[var(--Border)] bg-[var(--oldBorder)]
+    cursor-pointer px-4 py-12 w-[100%] md:w-[48%] lg:w-[30%] my-2  md:py-6 space-y-4 rounded-lg;
+  }
+  .featureCard h5{
+    @apply text-[var(--TextNav)] text-center font-bold font-[inter-black] text-base md:text-2xl;
+  }
+  .featureCard p{
+    @apply text-center w-full md:w-[90%] leading-[1.2];
   }
 }
 
