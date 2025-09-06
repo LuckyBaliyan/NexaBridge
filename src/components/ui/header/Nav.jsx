@@ -115,7 +115,7 @@ const Nav = () => {
                 </>
             )}
             </div>
-            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--BackgroundPrimary)] flex items-center justify-center w-10 scale-80
+            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--BackgroundPrimary)] flex items-center justify-center w-10
             aspect-square p-2 rounded-full z-[60]'>
                 <RxHamburgerMenu  className={`text-[var(--Accent)] absolute  text-sm transition-all ease-in-out duration-500
                     ${opened?'opacity-0':'opacity-100'}`}/>
