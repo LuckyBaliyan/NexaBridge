@@ -38,7 +38,7 @@ html,body{
          url('/fonts/Nunito-Medium.woff');
 }
 
-:root{
+/*:root{
     --BackgroundPrimary: #0A0A0A;
     --BackgroundCards: #121212;
     --Accent: rgb(161, 255, 20);
@@ -48,6 +48,19 @@ html,body{
     --Borders: #1F1F1F;
     --SuccessState: #16A34A;
     --WarningHighlig: #F59E0B;
+}*/
+
+:root {
+  --BackgroundPrimary:#f0f6ff;  
+  --BackgroundSecondary: #ffffff; 
+  --TextPrimary: #0f172a;
+  --Text: #334155;     
+  --TextNav:#121212;    
+  --Accent: #2563eb;      
+  --AccentHover: #1d4ed8;  
+  --Border: #e2e8f0;      
+  --Shadow: 0 2px 8px rgba(0,0,0,0.05);
+  --logoAccent:#1B4260;
 }
 
 @layer base{
@@ -58,105 +71,62 @@ html,body{
     @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
   }
   p{
-    @apply font-[nunito-regular] text-[#fff];
-  }
-  video{
-    @apply w-full h-full object-cover absolute top-0 left-0;
+    @apply font-[nunito-regular] text-[var(--Text)];
   }
   main{
     @apply w-full min-h-screen;
   }
   section{
-    @apply w-full min-h-screen;
+    @apply w-full min-h-screen bg-[var(--BackgroundPrimary)];
   }
   nav{
-    @apply text-white flex justify-between w-full p-2 md:p-4 fixed top-0 left-0 z-50;
+    @apply text-[var(--TextNav)] bg-[var(--BackgroundSecondary)] flex justify-between items-center w-full p-0 md:p-2
+    shadow fixed top-0 left-0 z-50;
+  }
+  input{
+    @apply rounded-lg;
+  }
+  select{
+    @apply rounded-md;
+  }
+  img{
+    @apply w-full h-full object-cover;
   }
 }
 
 @layer utilities{
-  .overlay{
-    @apply absolute top-0 left-0 w-full h-screen z-30;
-  }
   .links{
-    @apply md:flex gap-4 !text-white hidden; 
+    @apply md:flex gap-4 hidden font-bold; 
   }
   .mobile-links{
     @apply absolute w-full top-0 px-4 py-12 left-0 translate-x-[100%] 
-    h-[100vh] z-50 bg-[var(--BackgroundCards)] will-change-transform  flex flex-col gap-2 md:hidden;
+    h-[100vh] z-50 bg-[var(--BackgroundPrimary)] will-change-transform  flex flex-col gap-2 md:hidden;
   }
   .mobile-links p{
     @apply text-3xl font-[nunito-medium] font-bold;
   }
+  .hero{
+    @apply bg-[var(--BackgroundPrimary)];
+  }
   .button{
-    @apply w-[100px] gap-2 md:gap-[20px] pl-[6px] md:pl-[8px] md:w-[110px] lg:w-[130px] text-sm md:text-base;
+    @apply  px-6 py-1 rounded-full cursor-pointer active:scale-95 shadow-2xl
   }
-  .svgIcon{
-    @apply h-[18px] md:h-[25px];
-  }
+
 }
 
 /* Comman btn styles */
 
-.button {
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background-color: rgb(161, 255, 20);
-    border-radius: 30px;
-    color: rgb(19, 19, 19);
-    font-weight: 600;
-    border: none;
-    position: relative;
-    cursor: pointer;
-    transition-duration: .2s;
-    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.116);
-    transition-duration: .5s;
-  }
+.form{
+  background-color:var(--BackgroundSecondary);
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 20px rgba(201, 166, 107, 0.15); /* subtle shadow */
+  position: relative;
+}
 
-  .svgIcon {
-    transition-duration: 1.5s;
-  }
-
-  .bell path {
-    fill: rgb(19, 19, 19);
-  }
-
-  .button:hover {
-    background-color: rgb(192, 255, 20);
-    transition-duration: .5s;
-  }
-
-  .button:active {
-    transform: scale(0.97);
-    transition-duration: .2s;
-  }
-
-  .button:hover .svgIcon {
-    transform: rotate(250deg);
-    transition-duration: 1.5s;
-  }
-
-  .form{
-    /*background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);*/
-    background: var(--BackgroundCards);
-    border-radius: 12px;
-    padding: 2rem;
-    box-shadow: 0 4px 20px rgba(201, 166, 107, 0.15); /* subtle shadow */
-    border: 1px solid rgba(255, 255, 255, 0.1); /* faint border */
-    position: relative;
-  }
-
-  
-.form::before {
-  content: '';
-  position: absolute;
-  inset: -4px; /* offset border */
-  border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05); /* faint glow color */
-  z-index: -1;
-  filter: blur(12px); /* glow effect */
+.form input{
+  inset:0;
+  border: 0;
 }
 
 /* comman card styles */

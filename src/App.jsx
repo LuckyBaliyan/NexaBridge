@@ -26,7 +26,7 @@ const App = () => {
        </Route>
     </Routes>
       {/** Juggar for the notification configuration */}
-      <div className='fixed top-12 right-16 w-[15%] h-[10%] z-50 pointer-events-auto'>
+      <div className='fixed top-12 right-6 w-[0%] bg-red-300 z-50 pointer-events-auto'>
         <ToastContainer
         position="top-right"
         autoClose={3000}
@@ -35,7 +35,7 @@ const App = () => {
         closeOnClick
         pauseOnHover
         draggable
-        theme="dark"
+        theme="light"
       />
       </div>
     </>
