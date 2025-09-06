@@ -15,7 +15,7 @@ const Hero = () => {
               mentorship, and career opportunities for your institution's graduates.
             </p>
             <div className="img-wrapper w-[36vh] h-[24vh] self-center  lg:hidden block">
-            <img src="/images/hero.png" alt=""/>
+            <img src="/images/hero.webp" alt=""/>
             </div>
            <div className='flex gap-2 px-0'>
            <Link to='/login' state={{currentState:'SignUp'}}>
@@ -27,7 +27,7 @@ const Hero = () => {
            </div>
           </div>
           <div className="img-wrapper hidden md:relative lg:block pr-20">
-            <img src="/images/hero.png" alt=""/>
+            <img src="/images/hero.webp" alt=""/>
           </div>
         </div>
     </div>

@@ -47,12 +47,12 @@ const Nav = () => {
             <NavLink to='/'>
                <div className="content-wrapper flex items-center gap-1 md:gap-4 p-2">
                     <div className="logo-wrapper border-2 border-[var(--Accent)] z-[20] h-10 w-10 scale-100 md:scale-100 md:w-12 md:h-12  rounded-full overflow-hidden flex justify-center items-center ">
-                    <img src="/images/logo.svg" alt="" />
+                    <img src="/images/logo.webp" alt="" />
                     </div>
                     <div className="logo-wrapper absolute top-2 left-6 md:top-4 md:left-10 h-10 w-10 scale-100 md:scale-100 md:w-12 md:h-12  
                     rounded-full overflow-hidden flex justify-center items-center 
                     bg-gray-100 border-2">
-                    <img src="/images/mainLogo.png" alt="" />
+                    <img src="/images/mainLogo.webp" alt="" />
                     </div>
                </div>
             </NavLink>
@@ -115,7 +115,7 @@ const Nav = () => {
                 </>
             )}
             </div>
-            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--BackgroundPrimary)] flex items-center justify-center w-10
+            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--BackgroundPrimary)] mr-2 flex items-center justify-center w-10
             aspect-square p-2 rounded-full z-[60]'>
                 <RxHamburgerMenu  className={`text-[var(--Accent)] absolute  text-sm transition-all ease-in-out duration-500
                     ${opened?'opacity-0':'opacity-100'}`}/>
