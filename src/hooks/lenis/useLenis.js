@@ -18,7 +18,7 @@ const useLenis = () => {
 
     lenisRef.current = lenis;
 
-    lenis?.scrollTo(0,{immediate:true});
+    lenis?.scrollTo(0,{offset:0,duration:1});
 
     const raf = (time) => {
       lenis.raf(time * 1000);

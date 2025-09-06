@@ -6,7 +6,6 @@ import Button from '../Buttons/Mainbtn';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import gsap from 'gsap';
-import { MdShield } from "react-icons/md";
 
 
 const Nav = () => {
@@ -106,8 +105,8 @@ const Nav = () => {
             ):(
                 <>
                 <Link to='/login' state={{currentState:'Login'}}>
-                    <Button text='login' className='ml-2  border border-gray-300 
-                   text-gray-700 py-3 px-6 rounded-md'/>
+                    <Button text='login' className='ml-2 !rounded-lg !font-black !text-black !shadow-none !border-0 
+                    !bg-gray-200 btnSec'/>
                 </Link>
                 <Link to='/login' state={{currentState:'SignUp'}}>
                    <Button text='SignUp' className='bg-[var(--Accent)] text-[#fff] hidden md:block' />

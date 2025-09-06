@@ -22,8 +22,7 @@ const Hero = () => {
               <Button text='SignUp' className='bg-[var(--Accent)]
             text-white !py-3 !px-12 !rounded-full'/>
             </Link>
-            <Button text='Request A Demo' className="ml-2 border border-gray-300 
-            text-gray-700 py-3 px-6 rounded-md"/>
+            <Button text='Request A Demo' className="ml-2 border btnSec"/>
            </div>
           </div>
           <div className="img-wrapper hidden md:relative lg:block pr-20">

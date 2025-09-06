@@ -277,5 +277,5 @@ const Login = () => {
   );
 };
 
-export default Transition(Login);
+export default Login;
 

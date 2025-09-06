@@ -42,4 +42,4 @@ const App = () => {
   )
 }
 
-export default Transition(App);
+export default App;
