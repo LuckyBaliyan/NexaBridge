@@ -6,6 +6,7 @@ import Button from '../Buttons/Mainbtn';
 import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import gsap from 'gsap';
+import { FaHandshake } from "react-icons/fa";
 
 
 const Nav = () => {
@@ -44,23 +45,24 @@ const Nav = () => {
         <nav>
             <div className='flex items-center justify-center gap-6'>
             <NavLink to='/'>
-               <div className="content-wrapper flex items-center gap-1 md:gap-4 p-2">
+               <div className="content-wrapper relative flex items-center gap-1 md:gap-4 p-2">
                     <div className="logo-wrapper h-10 w-10 scale-90 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
-                    <img src="/images/logof.webp" alt="" />
+                    <img src="/images/logof.jpg" alt="" />
                     </div>
-                    <div className='h-12 border-l-2 border-gray-200'>
-                        &nbsp;
-                    </div>
+                    <FaHandshake className='text-xl md:text-4xl absolute left-[40%] z-30 text-[var(--Accent)] opacity-60'/>
                     <div className="logo-wrapper h-10 w-10 scale-90  md:w-14 md:h-14
                     rounded-full overflow-hidden flex justify-center items-center">
                     <img src="/images/mainlogof.webp" alt="" />
                     </div>
                </div>
             </NavLink>
-            <div className='md:ml-2 flex flex-col gap-0'>
-                <p className='text-xs p-1  md:text-base  leading-[0.75] font-medium text-white md:p-2 bg-[var(--Accent)]
-                rounded-full'>Punjab Govt Initaitive</p>
-                <p className=' text-xs p-1 md:text-base  leading-[0.75] font-extrabold text-black rounded md:p-2 uppercase'>Nexa Bridge</p>
+            <div className='md:ml-2 flex flex-col '>
+                <p className='text-xs p-1  lg:text-xl uppercase  leading-[1]  text-[var(--Accent)] 
+                md:p-2  font-black
+                rounded-full'>Punjab Govt. Initiative</p>
+                <p className=' text-xs p-1 md:text-sm  leading-[0.1] font-extrabold text-gray-700 rounded md:p-2 uppercase'>
+                    Nexa Bridge
+                </p>
             </div>
             </div>
             <div className='links'>
@@ -108,7 +110,7 @@ const Nav = () => {
             ):(
                 <>
                 <Link to='/login' state={{currentState:'Login'}}>
-                    <Button text='login' className='ml-2 !rounded-lg !font-black !text-black !shadow-none !border-0 
+                    <Button text='login' className='ml-2 !rounded-full !font-black !text-black !shadow-none !border-0 
                     !bg-gray-200 btnSec'/>
                 </Link>
                 <Link to='/login' state={{currentState:'SignUp'}}>
@@ -117,11 +119,11 @@ const Nav = () => {
                 </>
             )}
             </div>
-            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--BackgroundPrimary)] mr-2 flex items-center justify-center w-10
+            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--Accent)] mr-2 flex items-center justify-center w-10
             aspect-square p-2 rounded-full z-[60]'>
-                <RxHamburgerMenu  className={`text-[var(--Accent)] absolute  text-sm transition-all ease-in-out duration-500
+                <RxHamburgerMenu  className={`text-[#fff] absolute  text-sm transition-all ease-in-out duration-500
                     ${opened?'opacity-0':'opacity-100'}`}/>
-                <RxCross2 className={`text-2xl text-[var(--Accent)]  transition-all ease-in-out duration-350 
+                <RxCross2 className={`text-2xl text-[#fff]  transition-all ease-in-out duration-350 
                     ${opened?'opacity-100':'opacity-0'}`}
                 />
             </div>

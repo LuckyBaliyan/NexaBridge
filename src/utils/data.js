@@ -8,6 +8,9 @@ import {
   FaCamera,
   FaNewspaper,
   FaHandHoldingHeart, 
+  FaUniversity, 
+  FaChartLine, 
+  FaMapMarkedAlt,
 } from "react-icons/fa";
 
 const navLinks = {
@@ -113,4 +116,77 @@ const storiesData = [
   },
 ];
 
-export {navLinks,showCards,featuresData,storiesData};
+
+const eventsData = [
+  {
+    date: "12-Sep-2025",
+    heading: "Alumni Meet 2025",
+    description:
+      "Join us for our annual alumni meet where past and present students come together to network and share their journeys.",
+    img: "/images/e1.jpg",
+    buttonText: "View More",
+  },
+  {
+    date: "05-Oct-2025",
+    heading: "Tech Talk: AI in 2025",
+    description:
+      "A deep dive into the latest AI advancements hosted by industry experts. Open to students and alumni alike.",
+    img: "/images/e2.jpg",
+    buttonText: "Read More",
+  },
+  {
+    date: "22-Nov-2025",
+    heading: "Campus Placement News",
+    description:
+      "This year’s placement drive was a huge success with record-breaking offers from top companies.",
+    img: "/images/e3.jpg",
+    buttonText: "Explore",
+  },
+];
+
+
+const statsData = [
+  {
+    icon: FaUsers,
+    color: "#4CAF50", // Green
+    value: 50000,
+    suffix: "+",
+    label: "Registered Alumni",
+    sub: "Across all institutions",
+  },
+  {
+    icon: FaUniversity,
+    color: "#2196F3", // Blue
+    value: 200,
+    suffix: "+",
+    label: "Partner Institutions",
+    sub: "Universities & Colleges",
+  },
+  {
+    icon: FaChartLine,
+    color: "#FF9800", // Orange
+    value: 95,
+    suffix: "%",
+    label: "Success Rate",
+    sub: "Alumni satisfaction",
+  },
+  {
+    icon: FaMapMarkedAlt,
+    color: "#9C27B0", // Purple
+    value: 22,
+    suffix: "",
+    label: "Districts Covered",
+    sub: "Across Punjab",
+  },
+  {
+    icon: FaBriefcase,
+    color: "#F44336", // Red
+    value: 15000,
+    suffix: "+",
+    label: "Career Opportunities",
+    sub: "Shared via platform",
+  },
+];
+
+
+export {navLinks,showCards,featuresData,storiesData,eventsData,statsData};

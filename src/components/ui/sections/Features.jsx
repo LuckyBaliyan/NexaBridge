@@ -7,8 +7,8 @@ const Features = () => {
   return (
     <>
     <div className='flex flex-col space-y-6'>
-        <h2 className='text-center tracking-tight'>Why Choose <br /> <h2 className='
-        tracking-tight  text-5xl'>Nexa Bridge</h2></h2>
+        <h2 className='text-center tracking-tight'>Why Choose <br /> <p className='
+        tracking-tight font-[inter-black] text-[var(--Accent)] text-5xl'>Nexa Bridge</p></h2>
         <p className='text-center capitalize'>Discover the powerful features that makes Nexa Bridge the ultimate 
             platform for <br /> alumni netwroking
         </p>
@@ -28,6 +28,7 @@ const Features = () => {
                   heading={card.heading}
                   para={card.para}
                   diff={true}
+                  color={'#7660cc'}
                  />
             ))
         }

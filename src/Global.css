@@ -39,17 +39,6 @@ html,body{
          url('/fonts/Nunito-Medium.woff');
 }
 
-/*:root{
-    --BackgroundPrimary: #0A0A0A;
-    --BackgroundCards: #121212;
-    --Accent: rgb(161, 255, 20);
-    --AccentHover: rgb(192, 255, 20);
-    --TextPrimary: #F5F5F5;
-    --Text: #AEB6BD;
-    --Borders: #1F1F1F;
-    --SuccessState: #16A34A;
-    --WarningHighlig: #F59E0B;
-}*/
 
 :root {
   --BackgroundPrimary:#f0f6ff;  
@@ -58,8 +47,10 @@ html,body{
   --TextPrimary: #0f172a;
   --Text: #334155;     
   --TextNav:#121212;    
-  --Accent: #2563eb;      
-  --AccentHover: #1d4ed8;  
+  /*--Accent: #2563eb;  */
+  --Accent:#7660cc;    
+  /*--AccentHover: #1d4ed8;  */
+  --AccentHover:#917ed9;    
   --Border: #d3d9e1;      
   --Shadow: 0 2px 8px rgba(0,0,0,0.05);
   --logoAccent:#1B4260;
@@ -68,7 +59,7 @@ html,body{
 
 @layer base{
   h1{
-    @apply font-[inter-black] text-[var(--TextPrimary)] text-6xl md:text-8xl lg:text-9xl;
+    @apply font-[inter-black] text-[var(--TextPrimary)] text-6xl lg:text-9xl;
   }
   h2{
     @apply font-[inter-black] text-[var(--TextNav)] text-4xl md:text-6xl uppercase;
@@ -106,6 +97,12 @@ html,body{
   }
   button{
     @apply font-[nunito-regular] cursor-pointer;
+  }
+  span{
+    @apply text-[var(--Accent)];
+  }
+  footer{
+    @apply z-50;
   }
 }
 
@@ -189,3 +186,16 @@ html,body{
 .animate-scroll:active{
   animation-play-state: paused;
 }
+
+/*.frame::after{
+  content: '';
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: -10;
+}*/
+

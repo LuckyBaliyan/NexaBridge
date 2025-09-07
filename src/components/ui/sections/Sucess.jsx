@@ -7,7 +7,7 @@ const Sucess = () => {
     <div className='py-12 px-4'>
     <div>
         <h2 className='text-center'>
-           From Campus to Career
+           From Campus to <span>Career</span>
         </h2>
     </div>
     <div className="marquee">

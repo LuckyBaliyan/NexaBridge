@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import gsap from "gsap";
+import Mainbtn from  '../components/ui/Buttons/Mainbtn';
 
 const cardsData = [
   {
@@ -107,11 +108,13 @@ const SwipeCards = () => {
             transition: "transform 0.3s ease",
           }}
         >
-          <img
+         <div className="w-34 h-34 rounded-full border-2 border-[#C4B3FF] overflow-hidden p-2 mb-4 shadow-sm">
+             <img
             src={card.img}
             alt={card.name}
-            className="w-24 h-24 rounded-full object-cover mb-4 shadow-sm"
+            className="object-cover rounded-full"
           />
+         </div>
 
           <h3 className="text-xl font-bold text-gray-900">{card.name}</h3>
           <p className="text-sm text-gray-600 mb-4">{card.heading}</p>
@@ -121,6 +124,7 @@ const SwipeCards = () => {
             {card.comment}
             <span className="text-2xl font-bold text-gray-400">”</span>
           </p>
+          <Mainbtn text="Share your thoughts" className="!scale-60 md:!scale-100 mt-4 border rounded-full capitalize"/>
           <svg className="absolute bottom-0 right-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
            <path fill="#C4B3FF" fillOpacity="1" d="M0,224L60,224C120,224,240,224,360,202.7C480,181,600,139,720,122.7C840,107,960,117,1080,112C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
           </svg>
