@@ -16,7 +16,7 @@ const Sucess = () => {
     <div>
         <h5 className='text-center'>Tell yours</h5>
     </div>
-    <NewsLetter />
+    <NewsLetter text={'submit'}/>
     </div>
   )
 }
