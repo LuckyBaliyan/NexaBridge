@@ -15,7 +15,8 @@ const Events = () => {
        <div className='flex mt-4 flex-col gap-4 px-4'>
           <div className="img-wrapper relative w-full h-[80vh] overflow-hidden rounded">
             <img src="/images/d.jpg" alt="" />
-            <div className='absolute top-0 right-0 w-36 aspect-square rounded-bl-4xl z-20 border-b-10 border-l-10 border-white'></div>
+            <div className='absolute top-0 right-0 w-36 aspect-square rounded-bl-4xl z-20 border-b-10 
+            border-l-10 border-white backdrop-blur-[4px]'></div>
             <h2 className='absolute bottom-5 left-5 z-20 text-white mix-blend-difference'>Support Our Vision</h2>
           </div>
           <div className='w-[75%]'>
