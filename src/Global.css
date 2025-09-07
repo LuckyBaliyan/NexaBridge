@@ -101,7 +101,7 @@ html,body{
     @apply w-full h-full object-cover;
   }
   button{
-    @apply font-[nunito-regular];
+    @apply font-[nunito-regular] cursor-pointer;
   }
 }
 

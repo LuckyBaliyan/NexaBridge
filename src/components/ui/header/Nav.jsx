@@ -45,22 +45,22 @@ const Nav = () => {
             <div className='flex items-center justify-center gap-6'>
             <NavLink to='/'>
                <div className="content-wrapper flex items-center gap-1 md:gap-4 p-2">
-                    <div className="logo-wrapper h-12 w-12 scale-100 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
+                    <div className="logo-wrapper h-10 w-10 scale-90 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
                     <img src="/images/logof.webp" alt="" />
                     </div>
                     <div className='h-12 border-l-2'>
                         &nbsp;
                     </div>
-                    <div className="logo-wrapper h-12 w-12  md:w-14 md:h-14
+                    <div className="logo-wrapper h-10 w-10 scale-90  md:w-14 md:h-14
                     rounded-full overflow-hidden flex justify-center items-center">
                     <img src="/images/mainlogof.webp" alt="" />
                     </div>
                </div>
             </NavLink>
             <div className='md:ml-2 flex flex-col gap-0'>
-                <p className='text-base  leading-[0.75] font-medium text-white p-2 bg-[var(--Accent)]
+                <p className='text-xs p-1  md:text-base  leading-[0.75] font-medium text-white md:p-2 bg-[var(--Accent)]
                 rounded-full'>Punjab Govt Initaitive</p>
-                <p className='text-base  leading-[0.75] font-extrabold text-black rounded p-2 uppercase'>Nexa Bridge</p>
+                <p className=' text-xs p-1 md:text-base  leading-[0.75] font-extrabold text-black rounded md:p-2 uppercase'>Nexa Bridge</p>
             </div>
             </div>
             <div className='links'>
