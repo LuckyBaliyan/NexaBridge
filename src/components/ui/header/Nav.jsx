@@ -48,7 +48,7 @@ const Nav = () => {
                     <div className="logo-wrapper h-10 w-10 scale-90 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
                     <img src="/images/logof.webp" alt="" />
                     </div>
-                    <div className='h-12 border-l-2'>
+                    <div className='h-12 border-l-2 border-gray-200'>
                         &nbsp;
                     </div>
                     <div className="logo-wrapper h-10 w-10 scale-90  md:w-14 md:h-14
