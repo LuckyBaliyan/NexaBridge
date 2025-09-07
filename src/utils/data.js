@@ -86,4 +86,31 @@ const featuresData = [
   },
 ];
 
-export {navLinks,showCards,featuresData};
+const storiesData = [
+  {
+    img: "/images/s1.webp",
+    heading: "Secured Internship @ Amazon",
+    story:
+      "With guidance from alumni mentors, I landed my first big tech internship. Their insights on interviews and projects were a game-changer!",
+  },
+  {
+    img: "/images/s2.webp",
+    heading: "Pursuing Masters @ Stanford",
+    story:
+      "Through NexaBridge connections, I was able to get strong recommendation letters and prep guidance for my higher studies abroad.",
+  },
+  {
+    img: "/images/s3.webp",
+    heading: "Founder @ EduTech Startup",
+    story:
+      "Networking with seniors inspired me to build my own startup. Their mentorship helped me avoid early mistakes and grow faster.",
+  },
+  {
+    img: "/images/s4.webp",
+    heading: "UX Designer @ Spotify",
+    story:
+      "The alumni design workshops polished my portfolio and gave me the confidence to crack interviews at top product companies.",
+  },
+];
+
+export {navLinks,showCards,featuresData,storiesData};

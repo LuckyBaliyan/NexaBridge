@@ -3,6 +3,7 @@
 html,body{
   overflow-x: hidden;
   background-color: var(--BackgroundPrimary);
+  user-select: none;
 }
 
 ::-webkit-scrollbar{
@@ -74,6 +75,9 @@ html,body{
   }
   h4{
     @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
+  }
+  h5{
+    @apply font-[inter-black] text-xl text-[var(--TextNav)] capitalize;
   }
   p{
     @apply font-[nunito-regular] text-[var(--Text)] leading-[1.2];
@@ -153,6 +157,7 @@ html,body{
   }
 }
 
+
 /* Comman btn styles */
 
 .form{
@@ -179,4 +184,8 @@ html,body{
 
 .br{
   box-shadow: 20px 0px 1px #E7A1C7;
+}
+
+.animate-scroll:active{
+  animation-play-state: paused;
 }

@@ -29,18 +29,15 @@ const Home = () => {
     </div>
     </SlideUp>
     <SlideDown ref={downRef}>
-      <section className='mt-2'>
+      <section className='mt-2 relative'>
           <Testimonials />
       </section>
     </SlideDown>
-    <section>
-        <Footer/>
-    </section>
-   <SlideUp ref={succRef}>
-    <section className='even rounded-t-4xl -mt-[74vh] md:-mt-[54vh]'>
+    <SlideUp ref={succRef}>
+     <section className='even rounded-t-4xl  mt-[35vh] lg:mt-[45vh]'>
         <Sucess />
     </section>
-   </SlideUp>
+    </SlideUp>
     </>
   )
 }

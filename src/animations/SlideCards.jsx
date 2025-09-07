@@ -88,7 +88,12 @@ const SwipeCards = () => {
 
   return (
     <div className="relative w-full h-[600px] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
-     <div className="aspect-square w-[650px] lg:w-[120vw] lg:h-[950px]  rounded-t-full rounded-b-2xl bg-[#7b8995] top-1/2 left-1/2"></div>
+    <div className="absolute inset-0 z-0 overflow-hidden">
+        <svg className="absolute w-[600px] h-[600px] opacity-10 top-0 left-1/2 transform -translate-x-1/2" viewBox="0 0 800 800">
+        <circle cx="400" cy="400" r="400" fill="#fbcfe8" />
+        </svg>
+    </div>
+     <div className="aspect-square w-[650px] lg:w-[110vw] lg:h-[950px]  rounded-t-full rounded-b-2xl bg-[#7b8995d9] top-1/2 left-1/2"></div>
       {/* Card stack */}
       {cards.map((card, index) => (
         <div
@@ -116,6 +121,9 @@ const SwipeCards = () => {
             {card.comment}
             <span className="text-2xl font-bold text-gray-400">”</span>
           </p>
+          <svg className="absolute bottom-0 right-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+           <path fill="#C4B3FF" fillOpacity="1" d="M0,224L60,224C120,224,240,224,360,202.7C480,181,600,139,720,122.7C840,107,960,117,1080,112C1200,107,1320,85,1380,74.7L1440,64L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+          </svg>
         </div>
       ))}
 
