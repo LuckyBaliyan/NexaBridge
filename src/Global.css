@@ -176,3 +176,7 @@ html,body{
 .showCard:hover img{
   opacity: 1;
 }
+
+.br{
+  box-shadow: 20px 0px 1px #E7A1C7;
+}

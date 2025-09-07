@@ -5,6 +5,7 @@ import  Features  from '../../components/ui/sections/Features'
 import Testimonials from '../../components/ui/sections/Testimonials'
 import SlideUp from '../../animations/SlideUp'
 import SlideDown from '../../animations/SlideDown'
+import Footer from '../../components/ui/footer/Footer'
 
 const Home = () => {
   const slideRef = useRef(null);
@@ -26,10 +27,13 @@ const Home = () => {
     </div>
     </SlideUp>
     <SlideDown ref={downRef}>
-      <section className='mt-4'>
+      <section className='mt-2'>
           <Testimonials />
       </section>
     </SlideDown>
+    <section>
+        <Footer/>
+    </section>
     </>
   )
 }

@@ -10,7 +10,7 @@ const SlideDown = ({ className = '', children }) => {
 
   useGSAP(() => {
     gsap.to(slideRef.current, {
-      y: 200, // opposite of SlideUp (-180)
+      y: 180, // opposite of SlideUp (-180)
       ease: 'none',
       scrollTrigger: {
         trigger: slideRef.current,
