@@ -35,10 +35,10 @@ const cardsData = [
 const SwipeCards = () => {
   const [cards, setCards] = useState(cardsData);
   const cardRefs = useRef([]);
-  const isAnimating = useRef(false); // 🔒 animation lock
+  const isAnimating = useRef(false); 
 
   const handleNext = () => {
-    if (isAnimating.current) return; // stop spam clicks
+    if (isAnimating.current) return; 
     isAnimating.current = true;
 
     const firstCard = cardRefs.current[0];
@@ -55,7 +55,7 @@ const SwipeCards = () => {
           return updated;
         });
         gsap.set(firstCard, { x: 0, scale: 1, opacity: 1 });
-        isAnimating.current = false; // 🔓 unlock after animation
+        isAnimating.current = false; 
       },
     });
   };
@@ -88,12 +88,14 @@ const SwipeCards = () => {
 
   return (
     <div className="relative w-full h-[600px] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
+     <div className="aspect-square w-[650px] lg:w-[120vw] lg:h-[950px]  rounded-t-full rounded-b-2xl bg-[#7b8995] top-1/2 left-1/2"></div>
       {/* Card stack */}
       {cards.map((card, index) => (
         <div
           key={index}
           ref={(el) => (cardRefs.current[index] = el)}
-          className="absolute w-[90%] max-w-[460px] min-h-[400px] rounded-3xl shadow-lg overflow-hidden bg-white px-4 py-6 sm:px-6 md:px-8 flex flex-col items-center text-center border border-[var(--Border)]"
+          className="absolute w-[90%] max-w-[400px] min-h-[500px] mt-6 rounded-3xl shadow-lg overflow-hidden 
+          bg-white px-4 py-6 sm:px-6 md:px-8 flex flex-col items-center text-center border border-[var(--Border)]"
           style={{
             zIndex: cards.length - index,
             transform: `scale(${1 - index * 0.05}) translateY(-${index * 20}px)`,
@@ -117,7 +119,7 @@ const SwipeCards = () => {
         </div>
       ))}
 
-      <div className="absolute top-2/3 md:top-1/2 flex justify-between w-full max-w-[600px] px-4 z-30">
+      <div className="absolute top-2/3 md:top-1/2 flex justify-between w-full max-w-[550px] px-4 z-30">
         <button
           onClick={handlePrev}
           className="px-3 py-1 sm:px-4 sm:py-2 bg-gray-900 text-white text-sm sm:text-base rounded-full shadow hover:bg-gray-700"

@@ -15,7 +15,7 @@ const Features = () => {
     </div>
     <div className='block md:hidden pt-4'>
     <p className=' text-[#000] font-black text-center'>
-        More <FaArrowRight className='inline ml-2' />
+        Scroll <FaArrowRight className='inline ml-2' />
     </p>
     </div>
     <div className='snap-x snap-mandatory overflow-x-auto space-x-6 px-6 flex md:flex-wrap justify-between  

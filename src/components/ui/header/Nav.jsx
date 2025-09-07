@@ -45,19 +45,22 @@ const Nav = () => {
             <div className='flex items-center justify-center gap-6'>
             <NavLink to='/'>
                <div className="content-wrapper flex items-center gap-1 md:gap-4 p-2">
-                    <div className="logo-wrapper border-2 border-[var(--Accent)] z-[20] h-12 w-12 scale-100 md:scale-100 md:w-14 md:h-14  rounded-full overflow-hidden flex justify-center items-center ">
-                    <img src="/images/logo.webp" alt="" />
+                    <div className="logo-wrapper h-12 w-12 scale-100 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
+                    <img src="/images/logof.webp" alt="" />
                     </div>
-                    <div className="logo-wrapper absolute top-2 left-8 md:top-4 md:left-14 h-12 w-12 scale-100 md:scale-100 md:w-14 md:h-14  
-                    rounded-full overflow-hidden flex justify-center items-center 
-                    bg-gray-100 border-2">
-                    <img src="/images/mainLogo.webp" alt="" />
+                    <div className='h-12 border-l-2'>
+                        &nbsp;
+                    </div>
+                    <div className="logo-wrapper h-12 w-12  md:w-14 md:h-14
+                    rounded-full overflow-hidden flex justify-center items-center">
+                    <img src="/images/mainlogof.webp" alt="" />
                     </div>
                </div>
             </NavLink>
-            <div className='md:ml-6 flex flex-col gap-0'>
-                <p className='text-base  leading-[0.75] font-bold text-black rounded p-1'>Punjab Govt Initaitive</p>
-                <p className='text-base  leading-[0.75] font-extrabold text-black rounded p-1 uppercase'>Nexa Bridge</p>
+            <div className='md:ml-2 flex flex-col gap-0'>
+                <p className='text-base  leading-[0.75] font-medium text-white p-2 bg-[var(--Accent)]
+                rounded-full'>Punjab Govt Initaitive</p>
+                <p className='text-base  leading-[0.75] font-extrabold text-black rounded p-2 uppercase'>Nexa Bridge</p>
             </div>
             </div>
             <div className='links'>
