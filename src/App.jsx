@@ -8,6 +8,7 @@ import useLenis from './hooks/lenis/useLenis';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verification from './components/auth/Verification';
+import Donations from './pages/comman/Donations';
 
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
     <Routes>
        <Route  element={<MainLayout/>}>
             <Route path='/' element={<Home />} />
+            <Route path='/donations' element={<Donations />} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

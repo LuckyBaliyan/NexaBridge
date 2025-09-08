@@ -153,6 +153,9 @@ html,body{
   .featureCard p{
     @apply text-center w-full md:w-[90%] leading-[1.2];
   }
+  .cause{
+    @apply border-0;
+  }
 }
 
 

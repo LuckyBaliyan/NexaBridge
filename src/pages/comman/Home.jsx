@@ -15,7 +15,6 @@ const Home = () => {
   const slideRef = useRef(null);
   const downRef = useRef(null);
   const succRef = useRef(null);
-  const finalRef = useRef(null);
 
   return (
     <>
@@ -44,11 +43,9 @@ const Home = () => {
         <Events />
     </section>
     </SlideUp>
-    <SlideDown ref={finalRef}>
-    <section className='relative'>
+    <div className='relative h-[50vh]'>
         <FinalCall />
-    </section>
-    </SlideDown>
+    </div>
     </>
   )
 }

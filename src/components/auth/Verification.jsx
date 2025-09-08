@@ -49,7 +49,7 @@ const Verification = () => {
         <form onSubmit={handleVerify} className="space-y-4">
           <div>
             <div className="py-4 text-center px-2 capitalize bg-blue-100 text-black rounded">
-                <p>A six digi Otp is sent to registered email</p>
+                <p>A six digits code is sent to registered email</p>
             </div>
             <label className="block mb-1 mt-4">Enter OTP</label>
             <input

@@ -1,6 +1,7 @@
 import React from 'react'
 import EventBox from '../Boxes/EventBoxes';
 import Mainbtn from '../Buttons/Mainbtn';
+import { Link } from 'react-router-dom';
 
 const Events = () => {
   return (
@@ -28,7 +29,9 @@ const Events = () => {
             </p>
           </div>
           <div>
-            <Mainbtn text='contribute' className='bg-[var(--Accent)] text-white'/>
+           <Link to='/donations' >
+              <Mainbtn text='contribute' className='bg-[var(--Accent)] text-white'/>
+           </Link>
           </div>
        </div> 
     </div>

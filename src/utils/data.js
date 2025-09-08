@@ -188,5 +188,31 @@ const statsData = [
   },
 ];
 
+const causes = [
+    {
+      title: "Student Scholarship Fund",
+      description:
+        "Empower the next generation of leaders by contributing to scholarships.",
+      raised: 22500,
+      goal: 50000,
+      color: "bg-pink-500",
+    },
+    {
+      title: "Innovation Lab",
+      description:
+        "Fund cutting-edge research and provide state-of-the-art equipment.",
+      raised: 75000,
+      goal: 100000,
+      color: "bg-green-500",
+    },
+    {
+      title: "Community Outreach",
+      description:
+        "Support programs that make a positive impact in our local community.",
+      raised: 30000,
+      goal: 50000,
+      color: "bg-orange-400",
+    },
+];
 
-export {navLinks,showCards,featuresData,storiesData,eventsData,statsData};
+export {navLinks,showCards,featuresData,storiesData,eventsData,statsData,causes};

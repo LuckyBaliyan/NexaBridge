@@ -15,9 +15,7 @@ const MainLayout = () => {
           <main>
              <Outlet/>
           </main>
-        <SlideDown>
-           <Footer />
-        </SlideDown>
+      <Footer />
     </>
   )
 }
