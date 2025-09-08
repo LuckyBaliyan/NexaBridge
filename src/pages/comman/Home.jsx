@@ -23,7 +23,7 @@ const Home = () => {
     </section>
     <SlideUp ref={slideRef}>
     <div>
-       <section className='even rounded-t-4xl pt-16 mt-4 md:mt-0'>
+       <section className='even rounded-t-4xl pt-16 mt-6 md:mt-0'>
            <Benifits />
        </section>
        <section className='even rounded-b-4xl'>
@@ -38,7 +38,7 @@ const Home = () => {
       </section>
     </SlideDown>
     <SlideUp ref={succRef}>
-     <section className='even rounded-t-4xl  mt-[35vh] lg:mt-[45vh]'>
+     <section className='even rounded-t-4xl  mt-[35vh] md:mt-[5vh] lg:mt-[45vh]'>
         <Sucess />
         <Events />
     </section>

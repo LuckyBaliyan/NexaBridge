@@ -13,7 +13,7 @@ const Hero = () => {
         <div className="date-wrapper flex justify-between py-25">
           <div className="heading-wrapper pr-0 items-center lg:p-4 lg:items-start flex flex-col gap-12 md:gap-20 lg:gap-6">
             <h1 className='leading-[0.9] text-start tracking-tighter'>Welcome To <br /> <span>Nexa</span> Bridge</h1>
-            <p className='text-sm px-2  text-center lg:text-start md:text-base w-[100%] lg:w-[50%] lg:pl-2 leading-[1]'>Connect with your alumni network like never before. 
+            <p className=' text-sm md:!text-lg px-2 text-black  text-center lg:text-start  w-[100%] lg:w-[50%] lg:pl-2 leading-[1]'>Connect with your alumni network like never before. 
               NexaBridge offers a comprehensive platform to foster engagement, 
               mentorship, and career opportunities for your institution's graduates.
             </p>

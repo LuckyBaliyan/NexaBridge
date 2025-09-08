@@ -66,7 +66,7 @@ html,body{
     @apply font-[inter-black] text-[var(--TextNav)] text-4xl md:text-6xl uppercase;
   }
   h4{
-    @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight whitespace-nowrap;
+    @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight leading-tight lg:whitespace-nowrap;
   }
   h5{
     @apply font-[inter-black] text-xl text-[var(--TextNav)] capitalize;

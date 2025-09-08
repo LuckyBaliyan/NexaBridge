@@ -1,6 +1,7 @@
 import React from 'react'
 import Story from '../Cards/Story'
 import NewsLetter from '../Boxes/NewsLetter';
+import Mainbtn from '../Buttons/Mainbtn'
 
 const Sucess = () => {
   return (
@@ -12,6 +13,9 @@ const Sucess = () => {
     </div>
     <div className="marquee">
         <Story />
+    </div>
+    <div className='flex mb-2'>
+        <Mainbtn text='view All' className='capitalize border-2 ml-auto'/>
     </div>
     <div>
         <h5 className='text-center'>Tell yours</h5>

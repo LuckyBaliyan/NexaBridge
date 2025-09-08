@@ -42,9 +42,9 @@ const StatsCard = () => {
   }, []);
 
   return (
-    <div ref={sectionRef} className="w-full py-16 bg-white">
-      <h2 className="text-3xl tracking-tight md:text-4xl font-bold text-center mb-12">
-        Platform Impact in <span className="text-[var(--Accent)]">Numbers</span>
+    <div ref={sectionRef} className="w-full py-36 bg-white">
+      <h2 className="text-3xl tracking-tight md:text-5xl font-bold text-center mb-12">
+        Platform Impact in <br /><span className="text-[var(--Accent)]">Numbers</span>
       </h2>
 
       <div className="flex flex-wrap justify-center gap-6 px-4">

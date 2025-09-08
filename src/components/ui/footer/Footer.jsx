@@ -5,7 +5,7 @@ export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-8">
-        {/* Left Column - Logo + About */}
+        
         <div>
           <div className="flex items-center gap-3">
             <img
@@ -13,15 +13,15 @@ export default function Footer() {
               alt="Punjab Govt Logo"
               className="w-26 h-26 rounded-full"
             />
-            <h2 className="text-base font-bold text-[var(--Accent)]">Punjab Govt · Initiative NexaBridge</h2>
+            <h2 className="text-base font-bold text-[var(--Highlight)]">Punjab Govt · Initiative <span>NexaBridge</span></h2>
           </div>
           <p className="mt-4 text-sm leading-tight text-white">
             Connecting alumni, fostering community, and empowering success.
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div className="lg:ml-12">
+       
+        <div className="md:ml-14">
           <h3 className="font-semibold text-[var(--Accent)] mb-3">Quick Links</h3>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-white">Home</a></li>
@@ -31,7 +31,6 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Resources */}
         <div>
           <h3 className="font-semibold text-[var(--Accent)] mb-3">Resources</h3>
           <ul className="space-y-2 text-sm">
@@ -42,7 +41,7 @@ export default function Footer() {
           </ul>
         </div>
 
-        {/* Follow Us */}
+    
         <div>
           <h3 className="font-semibold text-[var(--Accent)] mb-3">Follow Us</h3>
           <div className="flex space-x-4 text-lg">
@@ -53,7 +52,7 @@ export default function Footer() {
         </div>
       </div>
 
-      {/* Bottom */}
+      
       <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
         © {new Date().getFullYear()} NexaBridge. All rights reserved. A Punjab Govt. Initiative.
       </div>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import Mainbtn from "../../components/ui/Buttons/Mainbtn";
 import {  toast } from "react-toastify";
 import { causes } from "../../utils/data";
+import { useAuth } from "../../context/AuthProvider";
+import { useNavigate, useLocation } from "react-router-dom";
 
 
 const CauseCard = ({ title, description, raised, goal, color }) => {
@@ -29,6 +31,9 @@ const CauseCard = ({ title, description, raised, goal, color }) => {
 };
 
 export default function DonationCard() {
+  const {role} = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
   const [selectedAmount, setSelectedAmount] = useState(5000);
   const [customAmount, setCustomAmount] = useState("");
   const [name, setName] = useState("");
@@ -47,9 +52,12 @@ export default function DonationCard() {
       return;
     }
 
-    toast.success(
-      `${name}, thank you for donating ₹${amount.toLocaleString()} 🎉`
-    );
+    if (!role) {
+      toast.warn("Please Login First");
+       navigate("/login", { state: { from: location } }); // for keep track of our previous location
+    } else {
+       toast.success(`${name}, thank you for donating ₹${amount.toLocaleString()} 🎉`);
+    }
 
     setSelectedAmount(5000);
     setCustomAmount("");

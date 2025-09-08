@@ -132,12 +132,13 @@ const Login = () => {
     }
   };
 
+useEffect(() => {
+  if (token) {
+    const redirectPath = location.state?.from?.pathname || "/"; // redirect to last visited page from where we initiate login
+    navigate(redirectPath, { replace: true });
+  }
+}, [token, navigate, location.state]);
 
-  useEffect(() => {
-    if (token) {
-      navigate("/");
-    }
-  }, [token, navigate]);
 
   return (
     <section className="min-h-screen flex items-center justify-center px-4">

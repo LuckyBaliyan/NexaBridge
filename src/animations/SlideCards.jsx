@@ -89,12 +89,14 @@ const SwipeCards = () => {
 
   return (
     <div className="relative w-full h-[600px] flex flex-col justify-center items-center px-4 sm:px-6 md:px-8">
-    <div className="absolute inset-0 z-0 overflow-hidden">
-        <svg className="absolute w-[600px] h-[600px] opacity-10 top-0 left-1/2 transform -translate-x-1/2" viewBox="0 0 800 800">
+     <div className="aspect-square w-[650px] lg:w-[55vw] lg:h-[1050px] lg:translate-y-[10%]  rounded-t-full 
+     rounded-b-2xl bg-[var(--Accent)] top-1/2 left-1/2">
+        <div className="absolute inset-0 z-0 overflow-hidden">
+        <svg className="absolute w-[600px] h-[600px] opacity-10 z-50 top-0 left-1/2 transform -translate-x-1/2" viewBox="0 0 800 800">
         <circle cx="400" cy="400" r="400" fill="#fbcfe8" />
         </svg>
-    </div>
-     <div className="aspect-square w-[650px] lg:w-[110vw] lg:h-[950px]  rounded-t-full rounded-b-2xl bg-[#7b8995d9] top-1/2 left-1/2"></div>
+        </div>
+     </div>
       {/* Card stack */}
       {cards.map((card, index) => (
         <div
