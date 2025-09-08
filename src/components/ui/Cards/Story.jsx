@@ -53,7 +53,7 @@ const Story = () => {
           width: calc(280px * ${storiesData.length * 2} + 24px * ${
         storiesData.length * 2
       });
-          animation: scroll 100s linear infinite;
+          animation: scroll 300s linear infinite;
         }
         @media (max-width: 768px) {
           .animate-scroll {
