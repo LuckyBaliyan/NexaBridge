@@ -12,7 +12,6 @@ import Donations from './pages/comman/Donations';
 import SucessAlumni from './pages/comman/SucessAlumni';
 import SpecificAlumniStory from './pages/comman/SpecificAlumniStory';
 import Loader from './animations/Loader';
-import withLoader from './animations/Loader';
 
 
 const App = () => {
@@ -22,6 +21,7 @@ const App = () => {
 
   return (
     <>
+    <Loader />
     <Routes>
        <Route  element={<MainLayout/>}>
             <Route path='/' element={<Home />} />
@@ -51,4 +51,4 @@ const App = () => {
   )
 }
 
-export default withLoader(App);
+export default App;

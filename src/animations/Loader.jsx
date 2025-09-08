@@ -1,8 +1,6 @@
-// Loader.js
 import React from "react";
 
-const withLoader = (WrappedComponent) => {
-  return function LoaderWrapper(props) {
+const Loader = () => {
     const [loading, setLoading] = React.useState(true);
 
     React.useEffect(() => {
@@ -19,9 +17,10 @@ const withLoader = (WrappedComponent) => {
       return () => clearTimeout(timer);
     }, []);
 
-    if (loading) {
-      return (
-        <div className="loader">
+  return (
+    loading && (
+       <div className="fixed top-0 left-0 w-full h-screen bg-white !z-[999]">
+         <div className="loader">
           <div className="loader-square" />
           <div className="loader-square" />
           <div className="loader-square" />
@@ -30,13 +29,11 @@ const withLoader = (WrappedComponent) => {
           <div className="loader-square" />
           <div className="loader-square" />
         </div>
-      );
-    }
-
-    return <WrappedComponent {...props} />;
-  };
+       </div>
+      )
+   ) 
 };
 
-export default withLoader;
+export default Loader;
 
 
