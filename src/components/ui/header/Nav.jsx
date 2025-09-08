@@ -49,7 +49,7 @@ const Nav = () => {
                     <div className="logo-wrapper h-10 w-10 scale-90 md:scale-100 md:w-14 md:h-14 overflow-hidden  rounded-full">
                     <img src="/images/logof.jpg" alt="" />
                     </div>
-                    <FaHandshake className='text-xl md:text-4xl absolute left-[40%] z-30 text-[var(--Accent)] opacity-60'/>
+                    <FaHandshake className='text-xl md:text-4xl absolute left-[40%] z-30 text-[var(--Accent)] opacity-100'/>
                     <div className="logo-wrapper h-10 w-10 scale-90  md:w-14 md:h-14
                     rounded-full overflow-hidden flex justify-center items-center">
                     <img src="/images/mainlogof.webp" alt="" />
@@ -57,8 +57,8 @@ const Nav = () => {
                </div>
             </NavLink>
             <div className='md:ml-2 flex flex-col '>
-                <p className='text-xs p-1  lg:text-xl uppercase  leading-[1]  text-[var(--Accent)] 
-                md:p-2  font-black
+                <p className='text-xs p-1  lg:text-xl uppercase  leading-[1]  text-[var(--Highlight)] 
+                md:p-2 font-[inter-black]  font-black
                 rounded-full'>Punjab Govt. Initiative</p>
                 <p className=' text-xs p-1 md:text-sm  leading-[0.1] font-extrabold text-gray-700 rounded md:p-2 uppercase'>
                     Nexa Bridge

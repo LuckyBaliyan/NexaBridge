@@ -55,6 +55,7 @@ html,body{
   --Shadow: 0 2px 8px rgba(0,0,0,0.05);
   --logoAccent:#1B4260;
   --TextLight: #333435;     
+  --Highlight:#d09c34;
 }
 
 @layer base{

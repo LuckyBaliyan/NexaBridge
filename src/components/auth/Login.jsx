@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../../context/AuthProvider.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { toast } from "react-toastify";
 import Button from "../ui/Buttons/Mainbtn.jsx";
-import { useLocation } from "react-router-dom";
 
 const FREE_EMAIL_DOMAINS = [
   "gmail.com",
@@ -16,7 +15,6 @@ const FREE_EMAIL_DOMAINS = [
 ];
 
 const Login = () => {
-
   const location = useLocation();
   const defaultState = location.state?.currentState || "Login"; 
   const [currentState, setCurrentState] = useState(defaultState);
@@ -24,7 +22,7 @@ const Login = () => {
   const [role, setRole] = useState("student");
   const { login } = useAuth();
   const navigate = useNavigate();
-  const [valid,setValid] = useState(true);
+  const [valid, setValid] = useState(true);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -33,7 +31,6 @@ const Login = () => {
 
   const [token, setToken] = useState(localStorage.getItem("token") || null);
 
-  // --- Password validation checks ---
   const [passwordChecks, setPasswordChecks] = useState({
     length: false,
     letter: false,
@@ -50,7 +47,6 @@ const Login = () => {
     });
   };
 
-  // --- Email validation ---
   const validateStudentEmail = (email) => {
     return /@([a-z0-9-]+\.)*(edu|ac|college|university)(\.[a-z]{2,})?$/i.test(email);
   };
@@ -70,19 +66,16 @@ const Login = () => {
     return validateAlumniEmail(emailValue);
   };
 
-  // --- Input change handler ---
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((s) => ({ ...s, [name]: value }));
 
     if (name === "password") checkPassword(value);
-    
-    if (name === "email") {
-      setValid(validateEmailByRole(value, role));
-    }
+    if (name === "email") setValid(validateEmailByRole(value, role));
   };
 
-  // --- Password requirements labels ---
+
   const requirementLabels = {
     length: "At least 6 characters",
     letter: "At least 1 letter (A–Z)",
@@ -94,7 +87,7 @@ const Login = () => {
     (k) => !passwordChecks[k]
   );
 
-  // --- Form submit handler ---
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
@@ -117,24 +110,8 @@ const Login = () => {
         return;
       }
 
-      const newUser = {
-        name: formData.name,
-        email: formData.email,
-        password: formData.password,
-        role,
-      };
 
-      accounts.push(newUser);
-      localStorage.setItem("accounts", JSON.stringify(accounts));
-
-      const mockToken = `${formData.email}-token`;
-      setToken(mockToken);
-      localStorage.setItem("token", mockToken);
-      localStorage.setItem("role", role);
-
-      login(role); // update context
-      toast.success("Successfully Signed Up");
-      setCurrentState("Login");
+      navigate("/verify", { state: { ...formData, role } });
     } else {
       const existingUser = accounts.find(
         (u) => u.email === formData.email && u.password === formData.password
@@ -146,7 +123,7 @@ const Login = () => {
         localStorage.setItem("token", mockToken);
         localStorage.setItem("role", existingUser.role);
 
-        login(existingUser.role); // update context
+        login(existingUser.role);
         toast.success("Successfully Logged In");
       } else {
         toast.warn("Account not found. Please Sign Up.");
@@ -155,7 +132,7 @@ const Login = () => {
     }
   };
 
-  // --- Redirect on successful login/signup ---
+
   useEffect(() => {
     if (token) {
       navigate("/");
@@ -163,27 +140,25 @@ const Login = () => {
   }, [token, navigate]);
 
   return (
-    <section className="min-h-screen flex items-center justify-center  px-4">
-      <div className="w-full max-w-md  p-8 rounded-2xl shadow-xl form border-0">
-        <h2 className="text-2xl font-semibold text-center  mb-6">
+    <section className="min-h-screen flex items-center justify-center px-4">
+      <div className="w-full max-w-md p-8 rounded-2xl shadow-xl form border-0">
+        <h2 className="text-2xl font-semibold text-center mb-6">
           {currentState}
         </h2>
 
-        {/* Role Selection */}
         <div className="mb-4">
           <label className="block mb-2">Select Role</label>
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
-            className="w-full p-2 cursor-pointer font-bold  bg-[var(--Accent)] 
-            text-[#fff] focus:outline-none focus:ring-0"
+            className="w-full p-2 cursor-pointer font-bold bg-[var(--Accent)] text-[#fff] focus:outline-none focus:ring-0"
           >
-            <option  value="student">Student</option>
-            <option  value="alumni">Alumni</option>
+            <option value="student">Student</option>
+            <option value="alumni">Alumni</option>
           </select>
         </div>
 
-        {/* Form */}
+   
         <form onSubmit={handleSubmit} className="space-y-4" noValidate>
           {currentState === "SignUp" && (
             <div>
@@ -195,13 +170,12 @@ const Login = () => {
                 value={formData.name}
                 required
                 placeholder="Enter your full name"
-                className="w-full p-2  bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] 
-                placeholder-[var(--Text)] focus:outline-none focus:ring-0"
+                className="w-full p-2 bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] placeholder-[var(--Text)] focus:outline-none focus:ring-0"
               />
             </div>
           )}
 
-          {/* Email */}
+       
           <div>
             <label className="block text-[var(--TextNav)] mb-1">Email</label>
             <input
@@ -214,15 +188,16 @@ const Login = () => {
                   ? "Enter your University Email"
                   : "Enter your Work/Professional Email"
               }
-              className="w-full p-2  bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] 
-              placeholder-[var(--Text)] focus:outline-none focus:ring-0"
+              className="w-full p-2 bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] placeholder-[var(--Text)] focus:outline-none focus:ring-0"
             />
           </div>
           {!valid && (
-            <p className="text-[var(--Accent)] text-sm">Must in required formate...</p>
+            <p className="text-[var(--Highlight)] text-sm">
+              Must be in required format...
+            </p>
           )}
 
-          {/* Password */}
+     
           <div>
             <label className="block text-[var(--TextNav)] mb-1">Password</label>
             <input
@@ -231,17 +206,14 @@ const Login = () => {
               onChange={handleChange}
               value={formData.password}
               placeholder="Enter your password"
-              className="w-full p-2  bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] 
-              placeholder-[var(--Text)] focus:outline-none focus:ring-0"
+              className="w-full p-2 bg-[var(--BackgroundPrimary)] text-[var(--TextNav)] placeholder-[var(--Text)] focus:outline-none focus:ring-0"
             />
           </div>
 
-          {/* Password requirements */}
+   
           {formData.password && unmetRequirements.length > 0 && (
             <div className="p-3 rounded-md text-sm bg-[#6584cc] border border-none">
-              <strong className="block text-[--Text] mb-1">
-                Required
-              </strong>
+              <strong className="block text-[--Text] mb-1">Required</strong>
               <ul className="mt-1 space-y-1">
                 {unmetRequirements.map((key) => (
                   <li key={key} className="text-[#fff]">
@@ -252,13 +224,17 @@ const Login = () => {
             </div>
           )}
 
-          {/* Button */}
-        <div className="w-full flex justify-center">       
-          <Button type='submit' text={currentState} className=" bg-[var(--Accent)] text-[#fff]"/>
-        </div>
- 
-          {/* Switch between Login & Signup */}
-          <p 
+     
+          <div className="w-full flex justify-center">
+            <Button
+              type="submit"
+              text={currentState}
+              className="bg-[var(--Accent)] text-[#fff]"
+            />
+          </div>
+
+
+          <p
             onClick={() =>
               setCurrentState((prev) =>
                 prev === "Login" ? "SignUp" : "Login"
@@ -277,4 +253,3 @@ const Login = () => {
 };
 
 export default Login;
-

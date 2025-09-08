@@ -7,6 +7,7 @@ import Login from './components/auth/Login';
 import useLenis from './hooks/lenis/useLenis';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Verification from './components/auth/Verification';
 
 
 const App = () => {
@@ -22,6 +23,7 @@ const App = () => {
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />
+           <Route path='/verify' element={<Verification />} />
        </Route>
     </Routes>
       {/** Juggar for the notification configuration */}
