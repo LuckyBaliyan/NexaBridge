@@ -34,7 +34,8 @@ const Verification = () => {
 
       login(newUser.role);
       toast.success("OTP Verified! Account Created");
-      navigate("/");
+      const redirectPath = userData?.from?.pathname || "/";
+      navigate(redirectPath, { replace: true });
     } else {
       toast.error("Invalid OTP, try again!");
     }

@@ -17,7 +17,7 @@ const Sucess = () => {
     </div>
     <div className='flex relative mb-2'>
        <Link to='/sucessAlumni'>
-          <Mainbtn text='view All' className='capitalize absolute right-0 border-2 ml-auto'/>
+          <Mainbtn text='view All' className='capitalize absolute right-1/3 md:right-2 -bottom-2 border-2 ml-auto'/>
        </Link>
     </div>
     <div>

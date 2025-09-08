@@ -2,11 +2,11 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Mainbtn from '../Buttons/Mainbtn'
 
-const UserCard = ({src,heading,para,btn}) => {
+const UserCard = ({id,src,heading,para,btn}) => {
   return (
     <div className='card'>
         <div className="img-wrapper h-auto w-full overflow-hidden">
-            <img src={`${src?src:'/images/user.png'}`} alt="" className='w-full h-full object-cover' />
+            <img src={`${src?src:'/images/user2.jpg'}`} alt="" className='w-full h-full object-cover' />
         </div>
         <div>
             <h5>
@@ -19,8 +19,8 @@ const UserCard = ({src,heading,para,btn}) => {
             </p>
         </div>
         <div>
-           <Link to={`/alumni/${heading.replace(/\s+/g, '-').toLowerCase()}`}>
-             <Mainbtn text={btn} className='bg-[#121212] mb-2 text-white !rounded'/>
+           <Link to={`/alumni/${id}`}>
+             <Mainbtn text={btn} className='bg-gray-800 mb-2 text-white !rounded'/>
            </Link>
         </div>
     </div>

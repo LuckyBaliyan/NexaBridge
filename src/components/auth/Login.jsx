@@ -110,8 +110,10 @@ const Login = () => {
         return;
       }
 
+      {/*used to avoid the condition of nested or skipping of route as we are going trough the login to signUp */}
 
-      navigate("/verify", { state: { ...formData, role,from:location} });
+      const originalFrom = location.state?.from || location; 
+      navigate("/verify", { state: { ...formData, role, from: originalFrom } });
     } else {
       const existingUser = accounts.find(
         (u) => u.email === formData.email && u.password === formData.password
@@ -193,7 +195,7 @@ useEffect(() => {
             />
           </div>
           {!valid && (
-            <p className="text-[var(--Highlight)] text-sm">
+            <p className="text-gray-800 text-sm">
               Must be in required format...
             </p>
           )}
@@ -213,8 +215,8 @@ useEffect(() => {
 
    
           {formData.password && unmetRequirements.length > 0 && (
-            <div className="p-3 rounded-md text-sm bg-[#6584cc] border border-none">
-              <strong className="block text-[--Text] mb-1">Required</strong>
+            <div className="p-3 rounded-md text-sm bg-[#7660ccfd] border border-none">
+              <strong className="block text-gray-800 mb-1">Required</strong>
               <ul className="mt-1 space-y-1">
                 {unmetRequirements.map((key) => (
                   <li key={key} className="text-[#fff]">

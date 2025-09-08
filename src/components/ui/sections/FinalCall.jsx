@@ -11,9 +11,18 @@ const FinalCall = () => {
     flex flex-col items-center gap-4'>
         <h2 className='text-center'>Ready to <span>Connect ?</span></h2>
         <p className='text-center capitalize font-bold'>SignUp Today and Start building your future</p>
-        <Link to='/login' state={{currentState:'SignUP'}}>
-          <Mainbtn text={`${role?'Explore our community':'Join our Community'}`} className='bg-[var(--Accent)] text-white'/>
+       {
+        role ? (
+        <Link to='/' state={{currentState:'SignUP'}}>
+          <Mainbtn text={'Explore our Community'} className='bg-[var(--Accent)] text-white'/>
         </Link>
+        )
+        :
+        (<Link to='/login'>
+          <Mainbtn text={'Join our Community'} className='bg-[var(--Accent)] text-white'/>
+        </Link>
+        )
+       }
     </div>
   )
 }

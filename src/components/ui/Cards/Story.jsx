@@ -32,7 +32,7 @@ const Story = () => {
                   {story.heading}
                 </h3>
                 <p className="text-sm text-center text-gray-600 flex-grow">{story.story}</p>
-                <Link to='/specificAlumni' >
+                <Link to={`/alumni/${story.id}`} >
                   <button className="mt-4 self-center px-4 py-2 bg-[var(--Accent)] text-white 
                   text-sm rounded-lg shadow hover:opacity-90 active:scale-95 transition-transform">
                   View More

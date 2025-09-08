@@ -11,6 +11,8 @@ import Verification from './components/auth/Verification';
 import Donations from './pages/comman/Donations';
 import SucessAlumni from './pages/comman/SucessAlumni';
 import SpecificAlumniStory from './pages/comman/SpecificAlumniStory';
+import Loader from './animations/Loader';
+import withLoader from './animations/Loader';
 
 
 const App = () => {
@@ -49,4 +51,4 @@ const App = () => {
   )
 }
 
-export default App;
+export default withLoader(App);
