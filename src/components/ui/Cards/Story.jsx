@@ -1,5 +1,6 @@
 import React from "react";
 import { storiesData } from "../../../utils/data";
+import { Link } from "react-router-dom";
 
 const Story = () => {
   const loopStories = [...storiesData, ...storiesData];
@@ -23,7 +24,7 @@ const Story = () => {
                 <div className="absolute w-full h-[30%] top-0 left-0 bg-[var(--Accent)]"></div>
               <div
                 className="w-30 mt-4 z-[20] border-6 border-white relative self-center justify-center aspect-square rounded-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${story.img})` }}
+                style={{ backgroundImage: `url(${story.img?story.img:'/images/user.png'})` }}
               />
 
               <div className="p-4 flex flex-col flex-grow">
@@ -31,9 +32,12 @@ const Story = () => {
                   {story.heading}
                 </h3>
                 <p className="text-sm text-center text-gray-600 flex-grow">{story.story}</p>
-                <button className="mt-4 self-center px-4 py-2 bg-[var(--Accent)] text-white text-sm rounded-lg shadow hover:opacity-90 active:scale-95 transition-transform">
+                <Link to='/specificAlumni' >
+                  <button className="mt-4 self-center px-4 py-2 bg-[var(--Accent)] text-white 
+                  text-sm rounded-lg shadow hover:opacity-90 active:scale-95 transition-transform">
                   View More
-                </button>
+                  </button>
+                </Link>
               </div>
             </div>
           ))}

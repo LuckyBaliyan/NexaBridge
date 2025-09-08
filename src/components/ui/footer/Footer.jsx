@@ -13,7 +13,7 @@ export default function Footer() {
               alt="Punjab Govt Logo"
               className="w-26 h-26 rounded-full"
             />
-            <h2 className="text-base font-bold text-[var(--Highlight)]">Punjab Govt · Initiative <span>NexaBridge</span></h2>
+            <h2 className="text-base font-bold text-[var(--Highlight)]">Punjab Government <br /><span>NexaBridge</span></h2>
           </div>
           <p className="mt-4 text-sm leading-tight text-white">
             Connecting alumni, fostering community, and empowering success.

@@ -111,7 +111,7 @@ const Login = () => {
       }
 
 
-      navigate("/verify", { state: { ...formData, role } });
+      navigate("/verify", { state: { ...formData, role,from:location} });
     } else {
       const existingUser = accounts.find(
         (u) => u.email === formData.email && u.password === formData.password

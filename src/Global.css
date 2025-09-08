@@ -156,6 +156,17 @@ html,body{
   .cause{
     @apply border-0;
   }
+  .card{
+    @apply flex flex-col gap-2 items-center overflow-hidden  border border-[var(--Border)] shadow-xl p-0 bg-[var(--Accent)]
+    text-white rounded-lg min-h-[50vh] md:h-auto lg:min-h-[50vh];
+  }
+  .card p{
+    @apply text-center text-white !text-xs p-2;
+  }
+
+  .card h5{
+    @apply font-black capitalize;
+  }
 }
 
 

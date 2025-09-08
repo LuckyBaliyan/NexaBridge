@@ -11,7 +11,7 @@ const Verification = () => {
 
   const userData = location.state;
   const [otp, setOtp] = useState("");
-  const [generatedOtp] = useState("123456"); // static OTP for demo
+  const [generatedOtp] = useState("745621"); // static OTP for demo
 
   const handleVerify = (e) => {
     e.preventDefault();

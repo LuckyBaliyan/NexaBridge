@@ -2,6 +2,7 @@ import React from 'react'
 import Story from '../Cards/Story'
 import NewsLetter from '../Boxes/NewsLetter';
 import Mainbtn from '../Buttons/Mainbtn'
+import { Link } from 'react-router-dom';
 
 const Sucess = () => {
   return (
@@ -14,8 +15,10 @@ const Sucess = () => {
     <div className="marquee">
         <Story />
     </div>
-    <div className='flex mb-2'>
-        <Mainbtn text='view All' className='capitalize border-2 ml-auto'/>
+    <div className='flex relative mb-2'>
+       <Link to='/sucessAlumni'>
+          <Mainbtn text='view All' className='capitalize absolute right-0 border-2 ml-auto'/>
+       </Link>
     </div>
     <div>
         <h5 className='text-center'>Tell yours</h5>

@@ -89,32 +89,119 @@ const featuresData = [
   },
 ];
 
+
+
 const storiesData = [
   {
     img: "/images/s1.webp",
     heading: "Secured Internship @ Amazon",
+    name: "Rohit Sharma",
     story:
       "With guidance from alumni mentors, I landed my first big tech internship. Their insights on interviews and projects were a game-changer!",
+    dets:
+      "Rohit always dreamt of working at a top tech company. With the mentorship program, he refined his coding skills, practiced mock interviews, and learned industry-level project workflows. This support gave him the confidence to crack Amazon's competitive hiring process."
   },
   {
     img: "/images/s2.webp",
     heading: "Pursuing Masters @ Stanford",
+    name: "Ananya Gupta",
     story:
       "Through NexaBridge connections, I was able to get strong recommendation letters and prep guidance for my higher studies abroad.",
+    dets:
+      "Ananya wanted to study in the US but lacked proper guidance for applications. With mentorship, she got help in drafting her Statement of Purpose, preparing for GRE exams, and securing recommendation letters from professors, which ultimately led to her admission at Stanford."
   },
   {
     img: "/images/s3.webp",
     heading: "Founder @ EduTech Startup",
+    name: "Arjun Mehta",
     story:
       "Networking with seniors inspired me to build my own startup. Their mentorship helped me avoid early mistakes and grow faster.",
+    dets:
+      "Arjun had ideas but didn’t know where to begin. He learned about business models, funding, and scaling strategies from alumni who had built successful startups. Within a year, his EduTech platform started gaining traction among students and teachers."
   },
   {
     img: "/images/s4.webp",
     heading: "UX Designer @ Spotify",
+    name: "Priya Nair",
     story:
       "The alumni design workshops polished my portfolio and gave me the confidence to crack interviews at top product companies.",
+    dets:
+      "Priya was passionate about design but lacked professional experience. With mock portfolio reviews and design critiques, she sharpened her skills and gained confidence. She eventually landed a role at Spotify, working on innovative user experiences."
+  },
+  {
+    img:null,
+    heading: "Data Scientist @ Google",
+    name: "Kabir Malhotra",
+    story:
+      "I transitioned from a core engineering role to data science with the right mentorship and guidance.",
+    dets:
+      "Kabir had a background in mechanical engineering but wanted to pivot into data science. Alumni mentors guided him on courses, projects, and Kaggle competitions, helping him build a strong portfolio that led to his role at Google."
+  },
+  {
+    img:null,
+    heading: "MBA @ Harvard Business School",
+    name: "Sneha Kapoor",
+    story:
+      "My mentors guided me through every step of the MBA application process, making my dream a reality.",
+    dets:
+      "Sneha received detailed guidance on her essays, GMAT preparation, and interview practice. She also connected with alumni already at HBS, which gave her insider perspectives on how to strengthen her application."
+  },
+  {
+    img:null,
+    heading: "Software Engineer @ Microsoft",
+    name: "Vivek Rathi",
+    story:
+      "From coding contests to real interviews, alumni mentorship helped me bridge the gap.",
+    dets:
+      "Vivek participated in coding hackathons but struggled in interviews. Mentorship gave him mock interview practice, resume reviews, and personalized feedback, which helped him secure his dream job at Microsoft."
+  },
+  {
+    img:null,
+    heading: "PhD Research @ MIT",
+    name: "Ritika Sen",
+    story:
+      "With the right guidance, I was able to publish papers and secure a PhD offer from MIT.",
+    dets:
+      "Ritika connected with research-focused mentors who helped her with paper writing, choosing journals, and preparing presentations for international conferences. Their inputs significantly boosted her research profile."
+  },
+  {
+    img:null,
+    heading: "Entrepreneur @ HealthTech Startup",
+    name: "Karan Verma",
+    story:
+      "Alumni mentors helped me validate my business idea and connect with the right investors.",
+    dets:
+      "Karan’s idea for a health monitoring app needed expert validation. Mentors with entrepreneurial experience guided him in creating a solid pitch deck and introduced him to angel investors, helping his startup take off."
+  },
+  {
+    img: null,
+    heading: "AI Researcher @ OpenAI",
+    name: "Meera Joshi",
+    story:
+      "Community support and mentorship gave me the confidence to pursue AI research full-time.",
+    dets:
+      "Meera was fascinated by AI but unsure how to specialize. Alumni researchers shared learning paths, datasets, and project ideas. Her contributions in open-source projects eventually helped her secure a position at OpenAI."
+  },
+  {
+    img: null,
+    heading: "Consultant @ McKinsey",
+    name: "Aditya Rao",
+    story:
+      "The alumni network prepared me for consulting case interviews and boosted my confidence.",
+    dets:
+      "Aditya had strong analytical skills but struggled with case interviews. Alumni mentors conducted multiple mock case sessions, refined his approach, and improved his communication, ultimately leading to his McKinsey offer."
+  },
+  {
+    img: null,
+    heading: "Product Manager @ Meta",
+    name: "Simran Kaur",
+    story:
+      "I transitioned into product management with the right mentorship and project experience.",
+    dets:
+      "Simran wanted to move from software engineering into product management. Mentors guided her in building cross-functional projects, understanding product strategy, and refining her storytelling skills, which helped her crack Meta's PM interview."
   },
 ];
+
 
 
 const eventsData = [

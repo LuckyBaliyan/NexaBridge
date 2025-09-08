@@ -9,6 +9,8 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Verification from './components/auth/Verification';
 import Donations from './pages/comman/Donations';
+import SucessAlumni from './pages/comman/SucessAlumni';
+import SpecificAlumniStory from './pages/comman/SpecificAlumniStory';
 
 
 const App = () => {
@@ -22,6 +24,8 @@ const App = () => {
        <Route  element={<MainLayout/>}>
             <Route path='/' element={<Home />} />
             <Route path='/donations' element={<Donations />} />
+            <Route path='/sucessAlumni' element={<SucessAlumni/>} />
+            <Route path='/alumni/:alumniId' element={<SpecificAlumniStory/>} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

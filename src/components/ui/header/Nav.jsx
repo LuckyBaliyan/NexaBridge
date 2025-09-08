@@ -59,7 +59,7 @@ const Nav = () => {
             <div className='md:ml-2 flex flex-col '>
                 <p className='text-xs p-1  lg:text-xl uppercase  leading-[1]  text-[var(--Highlight)] 
                 md:p-2 font-[inter-black]  font-black
-                rounded-full'>Punjab Govt. Initiative</p>
+                rounded-full'>Punjab Government</p>
                 <p className=' text-xs p-1 md:text-sm  leading-[0.1] font-extrabold text-gray-700 rounded md:p-2 uppercase'>
                     Nexa Bridge
                 </p>
