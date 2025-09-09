@@ -23,6 +23,7 @@ const Verification = () => {
         email: userData.email,
         password: userData.password,
         role: userData.role,
+        profileImg:null,
       };
 
       accounts.push(newUser);
@@ -32,7 +33,7 @@ const Verification = () => {
       localStorage.setItem("token", mockToken);
       localStorage.setItem("role", newUser.role);
 
-      login(newUser.role);
+      login(newUser.role,newUser);
       toast.success("OTP Verified! Account Created");
       const redirectPath = userData?.from?.pathname || "/";
       navigate(redirectPath, { replace: true });

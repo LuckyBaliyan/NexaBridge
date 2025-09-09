@@ -124,8 +124,10 @@ const Login = () => {
         setToken(mockToken);
         localStorage.setItem("token", mockToken);
         localStorage.setItem("role", existingUser.role);
+        localStorage.setItem("currentUser", existingUser.email);
+        localStorage.setItem('currentUser',JSON.stringify(existingUser));
 
-        login(existingUser.role);
+        login(existingUser.role,existingUser);
         toast.success("Successfully Logged In");
       } else {
         toast.warn("Account not found. Please Sign Up.");
