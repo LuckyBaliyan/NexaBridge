@@ -63,7 +63,7 @@ export const AuthProvider = ({ children }) => {
       }
     }
 
-    if(savedEvents.length>=1){
+    if(savedEvents){
        setEvents(JSON.parse(savedEvents));
     }else{
         setEvents(defaultEvents);
