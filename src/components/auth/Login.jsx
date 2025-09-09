@@ -136,12 +136,23 @@ const Login = () => {
     }
   };
 
-useEffect(() => {
+/*useEffect(() => {
   if (token) {
     const redirectPath = location.state?.from?.pathname || "/"; // redirect to last visited page from where we initiate login
     navigate(redirectPath, { replace: true });
   }
-}, [token, navigate, location.state]);
+}, [token, navigate, location.state]);*/
+
+useEffect(() => {
+  if (token) {
+    // only redirect if we are not already on login/signup/verify pages
+    const pathname = location.pathname;
+    if (pathname !== "/login" && pathname !== "/verify") {
+      const redirectPath = location.state?.from?.pathname || "/";
+      navigate(redirectPath, { replace: true });
+    }
+  }
+}, [token, navigate, location]);
 
 
   return (
