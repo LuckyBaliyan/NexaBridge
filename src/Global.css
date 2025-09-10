@@ -109,11 +109,11 @@ html,body{
 
 @layer utilities{
   .links{
-    @apply md:flex gap-4 hidden font-bold; 
+    @apply lg:flex gap-4 hidden font-bold; 
   }
   .mobile-links{
     @apply absolute w-full top-0 px-4 py-12 left-0 translate-x-[100%] 
-    h-[100vh] z-50 bg-[var(--BackgroundPrimary)] will-change-transform  flex flex-col gap-2 md:hidden;
+    h-[100vh] z-50 bg-[var(--BackgroundPrimary)] will-change-transform  flex flex-col gap-2 lg:hidden;
   }
   .mobile-links p{
     @apply text-3xl font-[nunito-medium] font-bold;

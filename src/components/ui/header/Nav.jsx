@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useAuth } from '../../../context/AuthProvider';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { navLinks } from '../../../utils/data';
 import Button from '../Buttons/Mainbtn';
 import { RxHamburgerMenu } from "react-icons/rx";
@@ -13,6 +13,7 @@ const Nav = () => {
   const {role, logout} = useAuth();
   const [opened,setOpened] = useState(false);
   const tl = useRef(null);
+  const location  = useLocation();
 
     useEffect(() => {
     tl.current = gsap.timeline({ paused: true,reversed:true});
@@ -22,13 +23,9 @@ const Nav = () => {
         x: 0,
         ease: "power2.inOut",
         duration: 0.8,
-      })
-      .to(".mask-para", {
-        opacity:1,
-        ease: "power2.inOut",
-        duration: 0.6,
-        stagger: 0.1, 
-      }, "-=0.5");
+    })
+
+    return ()=> tl.current.kill();
   }, []);
 
   useEffect(()=>{
@@ -66,11 +63,21 @@ const Nav = () => {
             </div>
             </div>
             <div className='links'>
+            <NavLink to='/' className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} >
+              <p>Home</p>
+            </NavLink>
             {
                 role &&
                 navLinks[role].map(link=>(
-                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'text-white':''}`} key={link.to} to={`${link.to}`}>
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} key={link.to} to={`${link.to}`}>
                         <p>{link.label}</p>
+                    </NavLink>
+                ))
+            }
+            {
+                ['About','Contact'].map((link,i)=>(
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`}  to={`/${link}`} key={i}>
+                        <p>{link}</p>
                     </NavLink>
                 ))
             }
@@ -78,48 +85,55 @@ const Nav = () => {
             <div className='mobile-links'>
                 <NavLink to='/'
                 >
-                    <p className='mask-para opacity-0' onClick={()=>setOpened(!opened)}>Home</p>
+                    <p onClick={()=>setOpened(!opened)}>Home</p>
                </NavLink>
                {
                 role &&
                 navLinks[role].map(link=>(
                     <NavLink to={link.to} key={link.to}>
-                        <p className='mask-para opacity-0'  onClick={()=>setOpened(!opened)}>
+                        <p onClick={()=>setOpened(!opened)}>
                           {link.label} 
                         </p>
                     </NavLink>
                 ))
             }
+            {
+               ['About','Contact'].map((link,i)=>(
+                    <Link to={`/${link}`} key={i}>
+                        <p>{link}</p>
+                    </Link>
+                ))
+            }
              {role?(
-               <p onClick={logout} className='mask-para opacity-0'>Logout</p>
+               <p onClick={logout}>Logout</p>
             ):(
                 <>
-                <Link to='/login' state={{currentState:'Login'}}>
-                    <p className='mask-para opacity-0'>Login</p>
+                <Link to='/login' state={{currentState:'Login',from:location}}>
+                    <p>Login</p>
                 </Link>
-                <Link to='/login' state={{currentState:'SignUp'}}>
-                   <p className='mask-para opacity-0'>SignUp</p>
+                <Link to='/login' state={{currentState:'SignUp',from:location}}>
+                   <p>SignUp</p>
                 </Link>
                 </>
             )}
             </div>
             {/** Later add a profile pic on clicking we get to profile page */}
-            <div className='scale-80 hidden -ml-8 sm:-ml-2 md:-ml-0 md:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] md:translate-x-0 md:scale-100'>
+            <div className='scale-80 hidden -ml-8 sm:-ml-2 md:-ml-0 lg:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] lg:translate-x-0 lg:scale-100'>
             {role?(
                 <Button text='logout' onClick={logout} className='bg-[var(--Accent)] text-white'/>
             ):(
                 <>
-                <Link to='/login' state={{currentState:'Login'}}>
+                <Link to='/login' state={{currentState:'Login',from:location}}>
                     <Button text='login' className='ml-2 !rounded-full !font-black !text-black !shadow-none !border-0 
                     !bg-gray-200 btnSec'/>
                 </Link>
-                <Link to='/login' state={{currentState:'SignUp'}}>
+                <Link to='/login' state={{currentState:'SignUp',from:location}}>
                    <Button text='SignUp' className='bg-[var(--Accent)] text-[#fff] hidden md:block' />
                 </Link>
                 </>
             )}
             </div>
-            <div onClick={()=>setOpened(!opened)} className='md:hidden bg-[var(--Accent)] mr-2 flex items-center justify-center w-10
+            <div onClick={()=>setOpened(!opened)} className='lg:hidden bg-[var(--Accent)] mr-2 flex items-center justify-center w-10
             aspect-square p-2 rounded-full z-[60]'>
                 <RxHamburgerMenu  className={`text-[#fff] absolute  text-sm transition-all ease-in-out duration-500
                     ${opened?'opacity-0':'opacity-100'}`}/>

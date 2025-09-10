@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState,memo } from "react";
 import { format } from "date-fns";
 import { FiShare2, FiTrash2 } from "react-icons/fi"; // Feather icons from react-icons
 import { CiBellOn } from "react-icons/ci";
 import { HiMiniBellAlert } from "react-icons/hi2";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const EventsCard = ({ event, currentUser, onDelete }) => {
   const isHost = event.host?.id === currentUser?.id;
@@ -63,13 +64,15 @@ const EventsCard = ({ event, currentUser, onDelete }) => {
         </div>
 
         {/* Buttons */}
-        <div className="flex gap-2 mt-3">
-          <button
-            className="flex-1 text-white px-4 py-2 rounded-lg transition bg-[var(--Accent)] 
+        <div className="flex w-full gap-2 mt-3">
+          <Link to={`/events/${event.id}`} className="flex-1">
+            <button
+            className="w-full text-white px-4 py-2 rounded-lg transition bg-[var(--Accent)] 
                        hover:bg-[var(--AccentHover)]"
           >
             View Details
           </button>
+          </Link>
 
           {/* Share Button */}
           <button
@@ -96,5 +99,5 @@ const EventsCard = ({ event, currentUser, onDelete }) => {
   );
 };
 
-export default EventsCard;
+export default memo(EventsCard);
 

@@ -54,7 +54,7 @@ const EventsPage = () => {
       <h1 className="text-3xl font-bold mb-6">Events</h1>
 
       {/* Tabs + Search + Create */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
+      <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
         {/* Tabs */}
         <div className="flex gap-3 flex-wrap">
           {["upcoming", "current", "past", "all", "my"].map((tab) => (
@@ -84,7 +84,7 @@ const EventsPage = () => {
         </div>
 
         {/* Search + Create */}
-        <div className="flex flex-col md:flex-row md:items-center gap-4 w-full md:w-auto">
+        <div className="flex flex-col md:flex-row md:items-center gap-4 w-full lg:w-auto">
           <input
             type="text"
             placeholder="Search events..."
