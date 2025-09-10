@@ -1,7 +1,7 @@
 import React from "react";
 import { eventsData } from "../../../utils/data";
 
-const EventCard = ({ heading, description, img, buttonText, date }) => {
+const EventCard = ({ heading, description, img, buttonText='View', date }) => {
   return (
     <div className="flex flex-col md:flex-row items-center gap-6 bg-[#E5E7EB] rounded-xl shadow-md  p-6 mb-8">
       <div className="flex-1 w-full md:w-auto">

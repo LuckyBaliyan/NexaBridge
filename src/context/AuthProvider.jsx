@@ -17,6 +17,7 @@ export const AuthProvider = ({ children }) => {
       "Join us for our annual alumni meet where past and present students come together to network and share their journeys.",
     img: "/images/e1.jpg",
     host:null,
+    status:'current',
     buttonText: "View More",
     participants:[],
   },
@@ -27,6 +28,7 @@ export const AuthProvider = ({ children }) => {
       "A deep dive into the latest AI advancements hosted by industry experts. Open to students and alumni alike.",
     img: "/images/e2.jpg",
     host:null,
+    status:'upcoming',
     buttonText: "Read More",
     participants:[],
   },
@@ -38,8 +40,69 @@ export const AuthProvider = ({ children }) => {
       "This year’s placement drive was a huge success with record-breaking offers from top companies.",
     img: "/images/e3.jpg",
     host:null,
+    status:'past',
     buttonText: "Explore",
     participants:[],
+  },
+    {
+    id: 4,
+    date: "18-Dec-2025",
+    heading: "Winter Fest 2025",
+    description:
+      "Celebrate the end of the year with fun activities, music, dance, and food at the annual winter fest.",
+    img: "",
+    host: null,
+    status:'past',
+    buttonText: "Join Now",
+    participants: [],
+  },
+  {
+    id: 5,
+    date: "15-Jan-2026",
+    heading: "Startup Pitch Day",
+    description:
+      "Budding entrepreneurs pitch their startup ideas to investors and mentors. A great platform for innovation.",
+    img: "",
+    host: null,
+    status:'current',
+    buttonText: "Pitch Now",
+    participants: [],
+  },
+  {
+    id: 6,
+    date: "03-Feb-2025",
+    heading: "Sports Meet 2025",
+    description:
+      "Annual sports meet featuring athletics, football, cricket, and more. Relive your campus sports memories.",
+    img: "",
+    host: null,
+    status:'past',
+    buttonText: "Get Tickets",
+    participants: [],
+  },
+  {
+    id: 7,
+    date: "28-Mar-2025",
+    heading: "Cultural Night",
+    description:
+      "An evening of dance, music, drama, and cultural showcases by students and alumni across the globe.",
+    img: "",
+    host: null,
+    status:'current',
+    buttonText: "Reserve Seat",
+    participants: [],
+  },
+  {
+    id: 8,
+    date: "10-Apr-2025",
+    heading: "Career Guidance Workshop",
+    description:
+      "Interactive session with industry leaders guiding students on resume building, interviews, and career choices.",
+    img: "",
+    host: null,
+    status:'upcoming',
+    buttonText: "Register",
+    participants: [],
   },
 ];
 
@@ -63,18 +126,24 @@ export const AuthProvider = ({ children }) => {
       }
     }
 
-    if(savedEvents){
-       setEvents(JSON.parse(savedEvents));
-    }else{
-        setEvents(defaultEvents);
-        localStorage.setItem("events",JSON.stringify(defaultEvents));
+    if (savedEvents) {
+    const parsed = JSON.parse(savedEvents);
+    if (Array.isArray(parsed) && parsed.length > 0) {
+      setEvents(parsed);
+    } else {
+      setEvents(defaultEvents);
+      localStorage.setItem("events", JSON.stringify(defaultEvents));
     }
+    } else {
+    setEvents(defaultEvents);
+    localStorage.setItem("events", JSON.stringify(defaultEvents));
+  }
     console.log(defaultEvents);
   }, []);
 
   //Save evey time a new event get created
   useEffect(()=>{
-      localStorage.setItem("event",JSON.stringify(events))
+      localStorage.setItem("events",JSON.stringify(events))
   },[events])
 
   const login = (userRole,userObj = null) => {

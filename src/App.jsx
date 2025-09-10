@@ -12,6 +12,8 @@ import Donations from './pages/comman/Donations';
 import SucessAlumni from './pages/comman/SucessAlumni';
 import SpecificAlumniStory from './pages/comman/SpecificAlumniStory';
 import Loader from './animations/Loader';
+import Events from './pages/eventsPages/Events';
+import Event from './pages/eventsPages/Event';
 
 
 const App = () => {
@@ -28,6 +30,8 @@ const App = () => {
             <Route path='/donations' element={<Donations />} />
             <Route path='/sucessAlumni' element={<SucessAlumni/>} />
             <Route path='/alumni/:alumniId' element={<SpecificAlumniStory/>} />
+            <Route path='/events' element={<Events />} />
+            <Route path='/events/:eventId' element={<Event/>} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />
@@ -38,7 +42,7 @@ const App = () => {
       <div className='fixed top-12 right-6 w-[0%] bg-red-300 z-50 pointer-events-auto'>
         <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={500}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick

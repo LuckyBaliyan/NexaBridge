@@ -11,7 +11,9 @@ const Events = () => {
        </div>
        <div className='relative'>
         <EventBox />
-        <Mainbtn text='View All' className='absolute right-0 bottom-0 mb-2 mr-4 border-2'/>
+        <Link to = '/events'>
+          <Mainbtn text='View All' className='absolute right-0 bottom-0 mb-2 mr-4 border-2'/>
+        </Link>
        </div>
        <div className='flex mt-4 flex-col gap-4 px-4'>
           <div className="img-wrapper relative w-full h-[80vh] overflow-hidden rounded">
