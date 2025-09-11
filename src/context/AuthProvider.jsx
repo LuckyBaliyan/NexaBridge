@@ -3,163 +3,73 @@ import { toast } from "react-toastify";
 
 const AuthContext = createContext();
 
+
 export const AuthProvider = ({ children }) => {
   const [role, setRole] = useState(null);
-  const [currentUser,setCurrentUser] = useState(null);
-  const [events,setEvents] = useState([]);
+  const [currentUser, setCurrentUser] = useState(null);
+  const [events, setEvents] = useState([]);
 
-  const defaultEvents = [
-  {
-    id:1,
-    date: "12-Sep-2025",
-    heading: "Alumni Meet 2025",
-    description:
-      "Join us for our annual alumni meet where past and present students come together to network and share their journeys.",
-    img: "/images/e1.jpg",
-    host:null,
-    status:'current',
-    buttonText: "View More",
-    participants:[],
-  },
-  { id:2,
-    date: "05-Oct-2025",
-    heading: "Tech Talk: AI in 2025",
-    description:
-      "A deep dive into the latest AI advancements hosted by industry experts. Open to students and alumni alike.",
-    img: "/images/e2.jpg",
-    host:null,
-    status:'upcoming',
-    buttonText: "Read More",
-    participants:[],
-  },
-  {
-    id:3,
-    date: "22-Nov-2025",
-    heading: "Campus Placement News",
-    description:
-      "This year’s placement drive was a huge success with record-breaking offers from top companies.",
-    img: "/images/e3.jpg",
-    host:null,
-    status:'past',
-    buttonText: "Explore",
-    participants:[],
-  },
-    {
-    id: 4,
-    date: "18-Dec-2025",
-    heading: "Winter Fest 2025",
-    description:
-      "Celebrate the end of the year with fun activities, music, dance, and food at the annual winter fest.",
-    img: "",
-    host: null,
-    status:'past',
-    buttonText: "Join Now",
-    participants: [],
-  },
-  {
-    id: 5,
-    date: "15-Jan-2026",
-    heading: "Startup Pitch Day",
-    description:
-      "Budding entrepreneurs pitch their startup ideas to investors and mentors. A great platform for innovation.",
-    img: "",
-    host: null,
-    status:'current',
-    buttonText: "Pitch Now",
-    participants: [],
-  },
-  {
-    id: 6,
-    date: "03-Feb-2025",
-    heading: "Sports Meet 2025",
-    description:
-      "Annual sports meet featuring athletics, football, cricket, and more. Relive your campus sports memories.",
-    img: "",
-    host: null,
-    status:'past',
-    buttonText: "Get Tickets",
-    participants: [],
-  },
-  {
-    id: 7,
-    date: "28-Mar-2025",
-    heading: "Cultural Night",
-    description:
-      "An evening of dance, music, drama, and cultural showcases by students and alumni across the globe.",
-    img: "",
-    host: null,
-    status:'current',
-    buttonText: "Reserve Seat",
-    participants: [],
-  },
-  {
-    id: 8,
-    date: "10-Apr-2025",
-    heading: "Career Guidance Workshop",
-    description:
-      "Interactive session with industry leaders guiding students on resume building, interviews, and career choices.",
-    img: "",
-    host: null,
-    status:'upcoming',
-    buttonText: "Register",
-    participants: [],
-  },
-];
-
-  // Refresh / first visit pe localStorage check kare
+  // Safe load on mount
   useEffect(() => {
-    const savedRole = localStorage.getItem("role");
-    const savedToken = localStorage.getItem("token");
-    const savedUser = localStorage.getItem('currentUser');
-    const savedEvents  = localStorage.getItem('events');
+    try {
+      const savedRole = localStorage.getItem("role");
+      const savedUser = localStorage.getItem("currentUser");
+      const savedEvents = localStorage.getItem("events");
 
-    if (savedRole && savedToken && savedUser) {
-      setRole(savedRole); // refresh hone ke baad bhi role set ho jayega
-      try{
-        setCurrentUser(JSON.parse(savedUser))
+      if (savedRole) setRole(savedRole);
+      if (savedUser) {
+        try {
+          setCurrentUser(JSON.parse(savedUser));
+        } catch {
+          setCurrentUser(null);
+        }
       }
-      catch{
-        setCurrentUser(null)
-      }
-      finally{
-        console.log("User set",savedUser);
-      }
-    }
 
-    if (savedEvents) {
-    const parsed = JSON.parse(savedEvents);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      setEvents(parsed);
-    } else {
-      setEvents(defaultEvents);
-      localStorage.setItem("events", JSON.stringify(defaultEvents));
+      if (savedEvents) {
+        try {
+          const parsed = JSON.parse(savedEvents);
+          if (Array.isArray(parsed)) {
+            setEvents(
+              parsed.map((ev) => ({
+                ...ev,
+                participants: ev.participants || [],
+                requests: ev.requests || [],
+                status: ev.status || computeStatus(ev.date, ev.time, ev.endDate),
+              }))
+            );
+          }
+        } catch (err) {
+          console.error("Error parsing events from localStorage", err);
+          setEvents([]);
+        }
+      }
+    } catch {
+      setEvents([]);
     }
-    } else {
-    setEvents(defaultEvents);
-    localStorage.setItem("events", JSON.stringify(defaultEvents));
-  }
-    console.log(defaultEvents);
   }, []);
 
-  //Save evey time a new event get created
-  useEffect(()=>{
-      localStorage.setItem("events",JSON.stringify(events))
-  },[events])
+  // Helper: persist immediately
+  const persistAndSetEvents = (updater) => {
+    setEvents((prev) => {
+      const newEvents = typeof updater === "function" ? updater(prev) : updater;
+      localStorage.setItem("events", JSON.stringify(newEvents));
+      return newEvents;
+    });
+  };
 
-  const login = (userRole,userObj = null) => {
+  //User auth code
+  const login = (userRole, userObj = null) => {
     setRole(userRole);
     localStorage.setItem("role", userRole);
-    // token localStorage me pehle hi set ho raha hai tumhare Login.jsx me
 
-    if(userObj){
-        setCurrentUser(userObj);
-        console.log('userSet',userObj);
-        localStorage.setItem('currentUser',JSON.stringify(userObj));
-    }else{
-         const token = localStorage.getItem("token");
+    if (userObj) {
+      setCurrentUser(userObj);
+      localStorage.setItem("currentUser", JSON.stringify(userObj));
+    } else {
+      const token = localStorage.getItem("token");
       if (token) {
         const email = token.replace("-token", "");
-        const accounts = JSON.parse(localStorage.getItem("accounts")) || [];
+        const accounts = JSON.parse(localStorage.getItem("accounts") || "[]");
         const found = accounts.find((a) => a.email === email);
         if (found) {
           setCurrentUser(found);
@@ -172,140 +82,257 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     setRole(null);
     setCurrentUser(null);
-    toast.success('sucessfully Logged out!');
+    toast.success("Successfully logged out!");
     localStorage.removeItem("role");
     localStorage.removeItem("token");
-    localStorage.removeItem('currentUser');
+    localStorage.removeItem("currentUser");
   };
+
+  // helper function to convert file to Base64 string
+const fileToBase64 = (file) => {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = () => resolve(reader.result); // base64 string
+    reader.onerror = (error) => reject(error);
+  });
+};
+
+
+// calculating status on basis of joining
+const computeStatus = (startDate, timeStr = "", endDate = "") => {
+  if (!startDate) return "upcoming";
+
+  const now = new Date();
+
+  const start = new Date(`${startDate}T${timeStr || "00:00"}`);
+  const end = endDate ? new Date(`${endDate}T23:59`) : start;
+
+  if (now < start) return "upcoming";
+  if (now >= start && now <= end) return "current";
+  return "past";
+};
+
+
+
+// ---------------- EVENTS ----------------
   
+const createEvent = async (newEvent) => {
+  if (!currentUser) {
+    toast.error("Login to post an event");
+    return;
+  }
 
-  //Basic crud operations 
+  if (role !== "alumni") {
+    toast.warn("Only Higher authorities are allowed for this action");
+    return;
+  }
 
-  //Create a new event only alumni can do this stuff
-  const createEvent = (newEvent)=>{
-        if(!currentUser){
-            toast.error("Login to post an event");
-            return;
-        }
-        
-        if(role !== 'Alumni'){
-            toast.warn("Only Higer authorities are allowed for this action");
-            return;
-        }
+  // Convert image to base64 if it's a File object
+  let imageData = newEvent.img;
+  if (newEvent.img instanceof File) {
+    imageData = await fileToBase64(newEvent.img);
+  }
 
-        const eventToAdd = {
-            ...newEvent,
-            id:Date.now(),
-            status:'Upcoming',
-            host:{
-                ...currentUser
-            },
-            participants:[],
-        };
+  if (!imageData || imageData.trim() === "") {
+  imageData = "/images/event.png";
+  }
 
-        setEvents((prev)=>[...prev,eventToAdd]);
-        toast.success("Event sucessfully created & sent for admin approval!");
+ const status = computeStatus(newEvent.date, newEvent.time, newEvent.endDate);
+
+  const eventToAdd = {
+    ...newEvent,
+    id: Date.now(),
+    img: imageData, 
+    status,
+    host: {
+      ...currentUser,
+    },
+    participants: [],
+    requests: [],
   };
 
-  // Update event stuff
-  const updateEvent = (eventId,updateData) =>{
-    setEvents((prev)=>
-    prev.map((ev)=>
-    ev.id === eventId && ev.host?.email === currentUser?.email?
-    {...ev,updateData}:ev)
+  setEvents((prev) => {
+    const updated = [...prev, eventToAdd];
+    localStorage.setItem("events", JSON.stringify(updated));
+    return updated;
+  });
+
+  toast.success("Event successfully created & sent for admin approval!");
+};
+
+const updateEvent = async (eventId, updateData) => {
+  if (role !== "alumni") {
+    toast.warn("Only higher authorities can update events");
+    return;
+  }
+
+  let imageData = updateData.img;
+  if (updateData.img instanceof File) {
+    imageData = await fileToBase64(updateData.img);
+  }
+
+ const status = computeStatus(updateData.date, updateData.time, updateData.endDate);
+
+
+  persistAndSetEvents((prev) =>
+    prev.map((ev) =>
+      ev.id === eventId && ev.host?.email === currentUser?.email
+        ? { ...ev, ...updateData, img: imageData, status }
+        : ev
     )
-  }
+  );
 
-  //Delete an event 
-  const deleteEvent = (eventId) =>{
-    setEvents((prev)=>
-    prev.filter((ev)=>
-    ev.id !== eventId && 
-    (role === 'alumni' || ev.host?.email === currentUser?.email)
-   ))
-  }
+  toast.success("Event updated successfully!");
+};
 
-  {
-    /*
-    change Status (final status can be changed by the alumni but 
-    the confirmation is done by the amin form panel)
-    **/
-  }
-
-  const changeStatus = (eventId,status) =>{
-    if(role !== 'alumni'){
-        toast.error("Not aurthorized for the this action");
-        return;
+  const deleteEvent = (eventId) => {
+    if (role !== "alumni") {
+      toast.warn("Only higher authorities can delete events");
+      return;
     }
-    setEvents((prev)=>
-    prev.map((ev)=>
-    ev.id === eventId ? {...ev,status:status}:ev
-   ))
-  }
-
-  //Join event
-
-  const joinEvent = (eventId)=>{
-    if(!currentUser){
-        toast.warn('Please Login to join the events!');
-        return;
-    }
-    setEvents((prev)=>
-    prev.map((ev)=>
-    ev.id === eventId
-   ?{
-    ...ev,
-    participants:ev.participants.some(
-        (p)=>p.email === currentUser.email
-    )?ev.participants:[...ev.participants,{...currentUser}]
-   }:ev))
-  }
-
-  //Leave Event
-
-  const leaveEvent = (eventId) =>{
-    if(!currentUser) return;
-    setEvents((prev)=>
-    prev.map((ev)=>
-    ev.id === eventId
-    ?{
-    ...ev,
-    participants:ev.participants.filter(
-        (p)=>p.email !== currentUser.email
-     ),
-    }:ev
-    )
-   )
-  }
-
-  //Get evets in which i enrolled 
-
-  const getMyEvents = () =>{
-    if(!currentUser) return [];
-
-    if(role === 'alumni') {
-        return events.filter((ev) => ev.host?.email === currentUser.email);
-    }else if (role === 'student') {
-        return events.filter((ev)=>
-        ev.participants.some((p)=> p.email === currentUser.email)
+    persistAndSetEvents((prev) =>
+      prev.filter((ev) => ev.id !== eventId)
     );
+  };
+
+  const changeStatus = (eventId, status) => {
+    if (role !== "alumni") {
+      toast.error("Not authorized");
+      return;
+    }
+    persistAndSetEvents((prev) =>
+      prev.map((ev) => (ev.id === eventId ? { ...ev, status } : ev))
+    );
+  };
+
+  const joinEvent = (eventId) => {
+    if (!currentUser) {
+      toast.warn("Please login to join the events!");
+      return;
+    }
+    persistAndSetEvents((prev) =>
+      prev.map((ev) =>
+        ev.id === eventId
+          ? {
+              ...ev,
+              participants: ev.participants.some(
+                (p) => p.email === currentUser.email
+              )
+                ? ev.participants
+                : [...ev.participants, { ...currentUser }],
+            }
+          : ev
+      )
+    );
+  };
+
+  const leaveEvent = (eventId) => {
+    if (!currentUser) return;
+    persistAndSetEvents((prev) =>
+      prev.map((ev) =>
+        ev.id === eventId
+          ? {
+              ...ev,
+              participants: ev.participants.filter(
+                (p) => p.email !== currentUser.email
+              ),
+            }
+          : ev
+      )
+    );
+  };
+
+  const getMyEvents = () => {
+    if (!currentUser) return [];
+    if (role === "alumni") {
+      return events.filter((ev) => ev.host?.email === currentUser.email);
+    }
+    if (role === "student") {
+      return events.filter((ev) =>
+        ev.participants.some((p) => p.email === currentUser.email)
+      );
     }
     return [];
-  }
+  };
 
-  // remeber here i use id for the sorting which i have put the  date 
-  // so its using date.now() for sorting 
+  const getRecentPosted = (limit = 3) => {
+    return [...events].sort((a, b) => b.id - a.id).slice(0, limit);
+  };
 
-  const getRecentPosted  = (limit = 3) =>{
-    return [...events]
-    .sort((a,b)=>b.id - a.id) // our OG classic sort function 
-    .slice(0,limit);
-  }
+  const requestToJoin = (eventId) => {
+    if (!currentUser) {
+      toast.warn("Please login first.");
+      return;
+    }
+    persistAndSetEvents((prev) =>
+      prev.map((event) =>
+        event.id === eventId
+          ? {
+              ...event,
+              requests: event.requests.some((r) => r.email === currentUser.email)
+                ? event.requests
+                : [...event.requests, { ...currentUser }],
+            }
+          : event
+      )
+    );
+    toast.success("Request sent!");
+  };
+
+  const approveRequest = (eventId, userEmail) => {
+    persistAndSetEvents((prev) =>
+      prev.map((event) => {
+        if (event.id === eventId && event.host?.email === currentUser?.email) {
+          const userToApprove = event.requests.find((u) => u.email === userEmail);
+          if (!userToApprove) return event;
+          return {
+            ...event,
+            participants: [...event.participants, userToApprove],
+            requests: event.requests.filter((u) => u.email !== userEmail),
+          };
+        }
+        return event;
+      })
+    );
+    toast.success("Student approved!");
+  };
+
+  const cancelRequest = (eventId) => {
+    persistAndSetEvents((prev) =>
+      prev.map((event) =>
+        event.id === eventId
+          ? {
+              ...event,
+              requests: event.requests.filter(
+                (req) => req.email !== currentUser.email
+              ),
+            }
+          : event
+      )
+    );
+    toast.success("Request canceled!");
+  };
+
+  const rejectRequest = (eventId, userEmail) => {
+    persistAndSetEvents((prev) =>
+      prev.map((event) =>
+        event.id === eventId && event.host?.email === currentUser?.email
+          ? {
+              ...event,
+              requests: event.requests.filter((u) => u.email !== userEmail),
+            }
+          : event
+      )
+    );
+    toast.warn("Request rejected!");
+  };
 
   return (
-    <AuthContext.Provider value={{ 
-        role, 
-        login, 
+    <AuthContext.Provider
+      value={{
+        role,
+        login,
         logout,
         currentUser,
         events,
@@ -316,11 +343,18 @@ export const AuthProvider = ({ children }) => {
         joinEvent,
         leaveEvent,
         getMyEvents,
-        getRecentPosted
-     }}>
+        getRecentPosted,
+        requestToJoin,
+        approveRequest,
+        rejectRequest,
+        cancelRequest,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
 };
 
 export const useAuth = () => useContext(AuthContext);
+
+

@@ -5,12 +5,19 @@ import { CiBellOn } from "react-icons/ci";
 import { HiMiniBellAlert } from "react-icons/hi2";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../../context/AuthProvider";
 
-const EventsCard = ({ event, currentUser, onDelete }) => {
-  const isHost = event.host?.id === currentUser?.id;
+const EventsCard = ({event}) => {
   const [reminder,setReminder] = useState(false);
+  const {deleteEvent,role,currentUser} = useAuth();
+
+  const isHost = event.host?.email === currentUser?.email && role === 'alumni';
 
   const handleReminder = ()=> {
+    if(!currentUser){
+        toast.warn('you need to login first to set a reminder');
+        return;
+    }
     setReminder((prev)=>!prev);
     if(!reminder)
     toast.success("Remider Set Sucessfully u will be notified when the event strats!");
@@ -32,6 +39,20 @@ const EventsCard = ({ event, currentUser, onDelete }) => {
     }
   };
 
+  const handleDelete = ()=>{
+    if(!currentUser){
+        toast.warn('login require to delete an event');
+        return;
+    }
+      if (!isHost) {
+      toast.warn("You are not authorized to delete this event.");
+      return;
+    }
+
+    deleteEvent(event.id);
+    toast.success("Sucessfully deleted this event");
+  }
+
   return (
     <div
       key={event.id}
@@ -39,7 +60,7 @@ const EventsCard = ({ event, currentUser, onDelete }) => {
                  w-full md:max-w-md lg:max-w-sm"
     >
       <img
-        src={event?.img && event.img.trim() !== "" ? event.img : "/images/event.png"}
+        src={event?.img || "/images/event.png"}
         alt={event.heading}
         className="w-full h-40 object-cover rounded-xl"
       />
@@ -86,7 +107,7 @@ const EventsCard = ({ event, currentUser, onDelete }) => {
           {/* Delete Button (Only for Alumni Host) */}
           {isHost && (
             <button
-              onClick={() => onDelete(event.id)}
+              onClick={handleDelete}
               className="p-2 rounded-lg bg-red-100 hover:bg-red-200 transition"
               title="Delete Event"
             >

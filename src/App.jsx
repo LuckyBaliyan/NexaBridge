@@ -14,6 +14,7 @@ import SpecificAlumniStory from './pages/comman/SpecificAlumniStory';
 import Loader from './animations/Loader';
 import Events from './pages/eventsPages/Events';
 import Event from './pages/eventsPages/Event';
+import ManageEvent from './pages/eventsPages/ManageEvent';
 
 
 const App = () => {
@@ -32,12 +33,15 @@ const App = () => {
             <Route path='/alumni/:alumniId' element={<SpecificAlumniStory/>} />
             <Route path='/events' element={<Events />} />
             <Route path='/events/:eventId' element={<Event/>} />
+            <Route path='/events/manage' element={<ManageEvent/>} />
+            <Route path="/events/manage/:eventId" element={<ManageEvent />} /> 
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />
            <Route path='/verify' element={<Verification />} />
        </Route>
     </Routes>
+
       {/** Juggar for the notification configuration */}
       <div className='fixed top-12 right-6 w-[0%] bg-red-300 z-50 pointer-events-auto'>
         <ToastContainer
@@ -51,6 +55,7 @@ const App = () => {
         theme="light"
       />
       </div>
+      
     </>
   )
 }

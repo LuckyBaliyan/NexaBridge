@@ -1,11 +1,20 @@
 import React, { useState } from "react";
 import { useAuth } from "../../context/AuthProvider";
 import EventsCard from "../../components/ui/Cards/EventsCard";
+import { useNavigate } from "react-router-dom";
+import { FaCheck, FaTimes } from "react-icons/fa";
+import Mainbtn from '../../components/ui/Buttons/Mainbtn';
 
 const EventsPage = () => {
-  const { events, currentUser } = useAuth();
+  const { events, currentUser, approveRequest, rejectRequest} = useAuth();
   const [activeTab, setActiveTab] = useState("upcoming");
   const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
+
+  const tabs = ["upcoming", "current", "past", "all", "my"];
+  if (currentUser?.role === "alumni") {
+    tabs.push("requests");
+  }
 
   // Filter by tab
   const filteredEvents = events.filter((event) => {
@@ -17,14 +26,14 @@ const EventsPage = () => {
     if (activeTab === "my") {
       if (currentUser?.role === "alumni") {
         return (
-          event.host?.id === currentUser?.id ||
-          event.participants?.some((p) => p.id === currentUser?.id) ||
-          event.requests?.some((r) => r.id === currentUser?.id)
+          event.host?.email === currentUser?.email ||
+          event.participants?.some((p) => p.email === currentUser?.email) ||
+          event.requests?.some((r) => r.email === currentUser?.email)
         );
       } else {
         return (
-          event.participants?.some((p) => p.id === currentUser?.id) ||
-          event.requests?.some((r) => r.id === currentUser?.id)
+          event.participants?.some((p) => p.email === currentUser?.email) ||
+          event.requests?.some((r) => r.email === currentUser?.email)
         );
       }
     }
@@ -37,16 +46,15 @@ const EventsPage = () => {
     event.heading.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  // Split sections for "My Events"
+  // My Events sub-categorization
   const myHosted = searchedEvents.filter(
-    (e) => e.host?.id === currentUser?.id
+    (e) => e.host?.email === currentUser?.email
   );
   const myJoined = searchedEvents.filter((e) =>
-    e.participants?.some((p) => p.id === currentUser?.id)
+    e.participants?.some((p) => p.email === currentUser?.email)
   );
-  
   const myRequested = searchedEvents.filter((e) =>
-    e.requests?.some((r) => r.id === currentUser?.id)
+    e.requests?.some((r) => r.email === currentUser?.email)
   );
 
   return (
@@ -57,7 +65,7 @@ const EventsPage = () => {
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-6">
         {/* Tabs */}
         <div className="flex gap-3 flex-wrap">
-          {["upcoming", "current", "past", "all", "my"].map((tab) => (
+          {tabs.map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -78,7 +86,9 @@ const EventsPage = () => {
                 ? "Past"
                 : tab === "all"
                 ? "All Events"
-                : "My Events"}
+                : tab === "my"
+                ? "My Events"
+                : "Requests"}
             </button>
           ))}
         </div>
@@ -94,6 +104,7 @@ const EventsPage = () => {
           />
           {currentUser?.role === "alumni" && (
             <button
+              onClick={() => navigate("/events/manage")}
               className="text-white px-4 py-2 rounded-full transition"
               style={{ backgroundColor: "var(--Accent)" }}
             >
@@ -103,30 +114,80 @@ const EventsPage = () => {
         </div>
       </div>
 
-      {/* Events Display */}
-      {activeTab !== "my" ? (
-        <div className="mb-10">
-          <h3 className="text-lg capitalize font-[nunito-regular] font-semibold mb-4">
-            {activeTab} Events
-          </h3>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
-            {searchedEvents.length > 0 ? (
-              searchedEvents.map((event) => (
-                <EventsCard key={event.id} event={event} />
+      {/* Tab Content */}
+      {activeTab === "requests" ? (
+        <div className="space-y-10">
+          <h3 className="text-lg font-semibold mb-6">Join Requests</h3>
+          {events.filter(ev => ev.host?.email === currentUser?.email && ev.requests?.length > 0).length === 0 ? (
+            <p className="text-gray-500">No join requests at the moment.</p>
+          ) : (
+            events
+              .filter(ev => ev.host?.email === currentUser?.email && ev.requests?.length > 0)
+              .map((ev) => (
+                <div key={ev.id} className="bg-white shadow-md rounded-xl p-6">
+                 <div className="flex gap-6 justify-between">
+                   <h4 className="text-xl font-semibold mb-4">{ev.heading.toUpperCase()}</h4> 
+                   <h6  className={`!text-white font-extrabold font-[nunito-regular]  
+                   flex items-center justify-center text-md mb-2 px-4 py-1 bg-[var(--Accent)] 
+                   rounded-full cursor-pointer`}
+                    onClick={()=>navigate(`/events/${ev.id}`)} >view</h6>
+                 </div>
+                  <div className="space-y-4">
+                    {ev.requests.map((req) => (
+                      <div
+                        key={req.email}
+                        className="flex items-center justify-between bg-gray-50 p-4 rounded-lg border border-[var(--Border)]"
+                      >
+                        <div className="flex items-center gap-4">
+                          <img
+                            src={req.img || "/images/user.png"}
+                            alt="profile"
+                            className="w-12 h-12 rounded-full object-cover"
+                          />
+                          <div>
+                            <p className="font-semibold">{req.name}</p>
+                            <p className="text-sm text-gray-600 capitalize">
+                              {req.role}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                         <div className="w-fit p-2 cursor-pointer rounded-lg active:scale-95  aspect-square flex items-center 
+                         justify-center bg-green-200" onClick={() => approveRequest(ev.id, req.email)} >
+                           <button
+                            className="text-green-600 text-xl pointer-events-none hover:scale-110 transition"
+                            title="Approve"
+                          >
+                            <FaCheck />
+                          </button>
+                         </div>
+                            <div className="w-fit p-2 cursor-pointer rounded-lg active:scale-95  aspect-square flex items-center justify-center
+                             bg-red-400" onClick={() => rejectRequest(ev.id, req.email)}>
+                           <button
+                            className="text-black text-xl pointer-events-none hover:scale-110 transition"
+                            title="Approve"
+                          >
+                            <FaTimes />
+                          </button>
+                         </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))
-            ) : (
-              <p className="text-gray-500">No events found.</p>
-            )}
-          </div>
+          )}
         </div>
-      ) : (
+      ) : activeTab === "my" ? (
         <div>
           <h3 className="text-lg font-semibold mb-6">My Events</h3>
 
-          {/* Alumni extra section */}
+          {/* Hosted */}
           {currentUser?.role === "alumni" && (
             <div className="mb-10">
-              <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">My Hosted Events</h4>
+              <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">
+                My Hosted Events
+              </h4>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
                 {myHosted.length > 0 ? (
                   myHosted.map((event) => (
@@ -141,7 +202,9 @@ const EventsPage = () => {
 
           {/* Joined */}
           <div className="mb-10">
-            <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">Joined Events</h4>
+            <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">
+              Joined Events
+            </h4>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
               {myJoined.length > 0 ? (
                 myJoined.map((event) => (
@@ -153,8 +216,11 @@ const EventsPage = () => {
             </div>
           </div>
 
+          {/* Requested */}
           <div>
-            <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">Requested Events</h4>
+            <h4 className="!text-xl font-[nunito-regular] font-semibold mb-3">
+              Requested Events
+            </h4>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
               {myRequested.length > 0 ? (
                 myRequested.map((event) => (
@@ -166,12 +232,28 @@ const EventsPage = () => {
             </div>
           </div>
         </div>
+      ) : (
+        <div className="mb-10">
+          <h3 className="text-lg capitalize font-[nunito-regular] font-semibold mb-4">
+            {activeTab} Events
+          </h3>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-12">
+            {searchedEvents.length > 0 ? (
+              searchedEvents.map((event) => (
+                <EventsCard key={event.id} event={event} />
+              ))
+            ) : (
+              <p className="text-gray-500">No events found.</p>
+            )}
+          </div>
+        </div>
       )}
     </div>
   );
 };
 
 export default EventsPage;
+
 
 
 
