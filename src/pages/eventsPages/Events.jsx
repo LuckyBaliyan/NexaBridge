@@ -3,7 +3,6 @@ import { useAuth } from "../../context/AuthProvider";
 import EventsCard from "../../components/ui/Cards/EventsCard";
 import { useNavigate } from "react-router-dom";
 import { FaCheck, FaTimes } from "react-icons/fa";
-import Mainbtn from '../../components/ui/Buttons/Mainbtn';
 
 const EventsPage = () => {
   const { events, currentUser, approveRequest, rejectRequest} = useAuth();

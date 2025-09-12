@@ -15,7 +15,8 @@ import Loader from './animations/Loader';
 import Events from './pages/eventsPages/Events';
 import Event from './pages/eventsPages/Event';
 import ManageEvent from './pages/eventsPages/ManageEvent';
-
+import UserDashBoard from './pages/comman/UserDashBoard';
+import Profile from './pages/comman/Profile';
 
 const App = () => {
 
@@ -35,6 +36,8 @@ const App = () => {
             <Route path='/events/:eventId' element={<Event/>} />
             <Route path='/events/manage' element={<ManageEvent/>} />
             <Route path="/events/manage/:eventId" element={<ManageEvent />} /> 
+            <Route path='/dashboard' element={<UserDashBoard/>} />
+            <Route path='/profile:email' element={<Profile/>} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

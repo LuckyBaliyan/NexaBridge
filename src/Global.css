@@ -68,6 +68,9 @@ html,body{
   h4{
     @apply font-[inter-black] text-2xl lg:text-5xl text-[var(--Accent)] tracking-tight leading-tight lg:whitespace-nowrap;
   }
+  h3{
+    @apply font-bold font-[nunito-medium];
+  }
   h5{
     @apply font-[inter-black] text-xl text-[var(--TextNav)] capitalize;
   }
@@ -167,6 +170,14 @@ html,body{
   .card h5{
     @apply font-black capitalize;
   }
+
+  .greetCards {
+  @apply flex flex-col items-center  justify-center bg-white 
+         border border-[var(--Border)] shadow rounded-lg px-4 py-4 
+         gap-2 md:min-h-32 w-full sm:w-[90%] md:w-[70%] lg:w-auto lg:flex-1
+         font-black font-[nunito-regular] text-sm md:text-base;
+  }
+
 }
 
 
@@ -347,5 +358,12 @@ html,body{
   .loader-square:nth-of-type(7) {
    animation-delay: -10s;
   }
+
+  /* React Calender Styling */
+.react-calendar {
+  width: 100%;
+  border: none;
+}
+
 
 

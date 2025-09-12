@@ -19,6 +19,7 @@ const navLinks = {
     { to: "/events", label: "Events" },
     { to: "/mentorship", label: "Mentorship" },
     { to: "/messages", label: "Messages" },
+    {to: "/donations", label: "Donations"},
   ],
   alumni: [
     { to: "/profile", label: "Profile" },
@@ -26,6 +27,7 @@ const navLinks = {
     { to: "/requests", label: "Requests" },
     { to: "/events", label: "Events" },
     { to: "/messages", label: "Messages" },
+    {to: "/donations", label: "Donations"},
   ],
 };
 

@@ -7,13 +7,16 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { RxCross2 } from "react-icons/rx";
 import gsap from 'gsap';
 import { FaHandshake } from "react-icons/fa";
+import { useNavigate } from 'react-router-dom';
+import { MdNotificationsNone, MdChatBubbleOutline } from "react-icons/md";
 
 
 const Nav = () => {
-  const {role, logout} = useAuth();
+  const {role, logout, currentUser} = useAuth();
   const [opened,setOpened] = useState(false);
   const tl = useRef(null);
   const location  = useLocation();
+  const navigate = useNavigate();
 
     useEffect(() => {
     tl.current = gsap.timeline({ paused: true,reversed:true});
@@ -117,11 +120,22 @@ const Nav = () => {
                 </>
             )}
             </div>
+            {/* If logged in so user Profile btn*/}
+            {currentUser && (
+                <>
+                <div className='flex gap-2 md:ml-auto md:translate-x-[100%] lg:translate-x-0 lg:ml-0'>
+                <MdNotificationsNone  className='text-2xl md:text-3xl text-[var(--TextNav)] cursor-pointer'/>
+                <MdChatBubbleOutline  className='text-2xl md:text-3xl text-[var(--TextNav)] cursor-pointer'/>
+                </div>
+                <div onClick={()=>navigate('/dashboard')} className='w-8 md:w-10 p-1 border-3 border-[var(--Text)] 
+                cursor-pointer aspect-square overflow-hidden md:ml-auto md:translate-x-[-50%] lg:absolute right-5 rounded-full'>
+                    <img src={currentUser.img || '/images/user.png'} alt="" />
+                </div>
+                </>
+            )}
             {/** Later add a profile pic on clicking we get to profile page */}
             <div className='scale-80 hidden -ml-8 sm:-ml-2 md:-ml-0 lg:flex md:gap-4 translate-x-[50%] sm:translate-x-[60%] lg:translate-x-0 lg:scale-100'>
-            {role?(
-                <Button text='logout' onClick={logout} className='bg-[var(--Accent)] text-white'/>
-            ):(
+            {!role &&(
                 <>
                 <Link to='/login' state={{currentState:'Login',from:location}}>
                     <Button text='login' className='ml-2 !rounded-full !font-black !text-black !shadow-none !border-0 
