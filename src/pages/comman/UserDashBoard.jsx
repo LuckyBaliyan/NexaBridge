@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import ProfileCard from "../../components/ui/sections/UserProfile";
+import PostApportunity from "../../components/ui/sections/PostApportunity";
 
 const Dashboard = () => {
   const { currentUser, role, events } = useAuth();
@@ -287,8 +288,7 @@ const Dashboard = () => {
         {/* Opportunities */}
         {activeTab === "opportunities" && (
           <div>
-            <h2 className="text-xl font-semibold mb-4">Opportunities</h2>
-            <p className="text-gray-600">Internships, jobs, and other opportunities here.</p>
+            <PostApportunity />
           </div>
         )}
 

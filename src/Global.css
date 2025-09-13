@@ -91,7 +91,7 @@ html,body{
     shadow fixed top-0 left-0 z-50;
   }
   input{
-    @apply rounded-lg;
+    @apply rounded-lg border border-[var(--Border)] outline-0 ring-0;
   }
   select{
     @apply rounded-md;
@@ -209,7 +209,7 @@ html,body{
   box-shadow: 20px 0px 1px #E7A1C7;
 }
 
-.animate-scroll:active{
+.animate-scroll:active,.animate-scroll:hover{
   animation-play-state: paused;
 }
 

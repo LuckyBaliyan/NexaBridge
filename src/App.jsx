@@ -1,7 +1,7 @@
 import React from 'react'
 import './Global.css'
 import Home from './pages/comman/Home';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Router, Routes } from 'react-router-dom';
 import MainLayout from './layouts/MainLayout';
 import Login from './components/auth/Login';
 import useLenis from './hooks/lenis/useLenis';
@@ -17,6 +17,11 @@ import Event from './pages/eventsPages/Event';
 import ManageEvent from './pages/eventsPages/ManageEvent';
 import UserDashBoard from './pages/comman/UserDashBoard';
 import Profile from './pages/comman/Profile';
+import EditUserProfile from './pages/Profiles/EditUserProfile';
+import Apportunities from './pages/comman/Apportunities';
+import Apportunity from './pages/comman/Apportunity';
+import About from './pages/comman/About';
+import Contact from './pages/comman/Contact';
 
 const App = () => {
 
@@ -38,6 +43,11 @@ const App = () => {
             <Route path="/events/manage/:eventId" element={<ManageEvent />} /> 
             <Route path='/dashboard' element={<UserDashBoard/>} />
             <Route path='/profile:email' element={<Profile/>} />
+            <Route path='/editProfile' element={<EditUserProfile/>} />
+            <Route path='/opportunities' element={<Apportunities/>} />
+            <Route path='/opportunity' element={<Apportunity/>} />
+            <Route path='/about' element={<About />} />
+            <Route path='/contact' element={<Contact />} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

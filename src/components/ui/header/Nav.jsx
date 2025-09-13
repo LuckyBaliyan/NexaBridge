@@ -56,7 +56,7 @@ const Nav = () => {
                     </div>
                </div>
             </NavLink>
-            <div className='md:ml-2 flex flex-col '>
+            <div className='md:ml-2 translate-x-[-20%] md:translate-x-0 flex flex-col '>
                 <p className='text-xs p-1  lg:text-xl uppercase  leading-[1]  text-[var(--Highlight)] 
                 md:p-2 font-[inter-black]  font-black
                 rounded-full'>Punjab Government</p>
@@ -72,20 +72,22 @@ const Nav = () => {
             {
                 role &&
                 navLinks[role].map(link=>(
-                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} key={link.to} to={`${link.to}`}>
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} 
+                    key={link.to} to={`${link.to}`}>
                         <p>{link.label}</p>
                     </NavLink>
                 ))
             }
             {
                 ['About','Contact'].map((link,i)=>(
-                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`}  to={`/${link}`} key={i}>
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`}  
+                    to={`/${link}`} key={i}>
                         <p>{link}</p>
                     </NavLink>
                 ))
             }
             </div>
-            <div className='mobile-links'>
+            <div className='mobile-links !bg-white'>
                 <NavLink to='/'
                 >
                     <p onClick={()=>setOpened(!opened)}>Home</p>
@@ -103,7 +105,7 @@ const Nav = () => {
             {
                ['About','Contact'].map((link,i)=>(
                     <Link to={`/${link}`} key={i}>
-                        <p>{link}</p>
+                        <p onClick={()=>setOpened(!opened)}>{link}</p>
                     </Link>
                 ))
             }
@@ -123,12 +125,13 @@ const Nav = () => {
             {/* If logged in so user Profile btn*/}
             {currentUser && (
                 <>
-                <div className='flex gap-2 md:ml-auto md:translate-x-[100%] lg:translate-x-0 lg:ml-0'>
+                <div className='flex gap-2 translate-x-[-50%] md:ml-auto md:translate-x-[100%] lg:translate-x-0 lg:ml-0'>
                 <MdNotificationsNone  className='text-2xl md:text-3xl text-[var(--TextNav)] cursor-pointer'/>
-                <MdChatBubbleOutline  className='text-2xl md:text-3xl text-[var(--TextNav)] cursor-pointer'/>
+                <MdChatBubbleOutline  className='text-2xl hidden md:block md:text-3xl text-[var(--TextNav)] cursor-pointer'/>
                 </div>
-                <div onClick={()=>navigate('/dashboard')} className='w-8 md:w-10 p-1 border-3 border-[var(--Text)] 
-                cursor-pointer aspect-square overflow-hidden md:ml-auto md:translate-x-[-50%] lg:absolute right-5 rounded-full'>
+                <div onClick={()=>navigate('/dashboard')} className='w-6 md:w-10 p-1 border-3 border-[var(--Text)] 
+                cursor-pointer aspect-square overflow-hidden md:ml-auto translate-x-[-30%] md:translate-x-[-50%] lg:translate-x-[0%] 
+                lg:absolute right-5 rounded-full'>
                     <img src={currentUser.img || '/images/user.png'} alt="" />
                 </div>
                 </>

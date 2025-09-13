@@ -13,8 +13,11 @@ const NewsLetter = ({color='bg-gray-100',text='Subscribe'}) => {
     <div className='text-center'>
         <form action="" onSubmit={onsubmitHandler} className={`w-full flex sm:w-1/2 items-center gap-3 mx-auto my-6 ${color}  pl-3`}>
             <input type="email" placeholder='Enter your email to sent your request' className='
-            w-[75%] rounded-l-md md:w-full sm:flex-1 outline-none' required value={value} onChange={(e)=>setValue(e.target.value)}/>
-            <button type='submit' className='bg-[var(--Accent)] rounded-r-md text-white text-xs px-4 md:px-10 py-4 uppercase cursor-pointer'>{text}</button>
+            w-[75%] rounded-l-md md:w-full sm:flex-1 !border-0 !outline-none' required value={value} onChange={(e)=>setValue(e.target.value)}/>
+            <button type='submit' className='bg-[var(--Accent)] rounded-r-md text-white text-xs px-4 
+            md:px-10 py-4 uppercase cursor-pointer'>
+              {text}
+            </button>
         </form>
     </div>
   )

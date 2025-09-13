@@ -1,8 +1,11 @@
 import React from "react";
 import { useAuth } from "../../../context/AuthProvider";
+import { FaSuitcaseMedical } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
 const ProfileCard = () => {
   const {role} = useAuth();
+  const navigate = useNavigate();
   const user = {
     name: "Sophia Carter",
     title: "Product Manager at Tech Innovators Inc.",
@@ -57,7 +60,7 @@ const ProfileCard = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto mt-2 p-6 bg-white shadow-md rounded-md">
+    <div className="max-w-4xl mx-auto  p-6 bg-white shadow-md rounded-md">
       {/* Header */}
     <div className="flex flex-col md:flex-row items-center md:items-start gap-6">
     <img
@@ -76,7 +79,7 @@ const ProfileCard = () => {
         </button>
         <button className="border border-[var(--Border)] px-4 py-1.5 rounded-md bg-gray-200">Send Message</button>
         
-        {/* Availability Status */}
+        {/* Availability Status
         <span
           className={`text-sm font-semibold px-2 py-1 rounded ${
             user.availability === "Available"
@@ -85,10 +88,11 @@ const ProfileCard = () => {
           }`}
         >
           {user.availability}
-        </span>
+        </span>*/}
   
         {/* Edit Profile Button */}
-        <button className="ml-auto bg-[var(--Accent)] text-white px-4 py-1.5 rounded-md">
+        <button onClick={()=>navigate('/editProfile')} 
+        className="lg:ml-auto bg-[var(--Accent)] text-white px-4 py-1.5 rounded-md">
           Edit Profile
         </button>
       </div>
@@ -135,7 +139,8 @@ const ProfileCard = () => {
           <h3 className="font-semibold text-lg mb-2">Experience</h3>
           {user.experience.map((exp, index) => (
             <div key={index} className="flex items-center gap-3 mb-2">
-              <span>📁</span>
+              <span className="bg-purple-100 flex items-center justify-center p-2
+              rounded-full"><FaSuitcaseMedical className="text-2xl"/></span>
               <div>
                 <p className="font-medium">{exp.title}</p>
                 <p className="text-sm text-gray-500">{exp.years}</p>
@@ -147,7 +152,7 @@ const ProfileCard = () => {
           <h3 className="font-semibold text-lg mb-2">Education</h3>
           {user.education.map((edu, index) => (
             <div key={index} className="flex items-center gap-3 mb-2">
-              <span>🎓</span>
+              <span className="text-2xl">🎓</span>
               <div>
                 <p className="font-medium">{edu.degree}</p>
                 <p className="text-sm text-gray-500">{edu.years}</p>
