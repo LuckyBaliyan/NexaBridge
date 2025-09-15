@@ -66,13 +66,13 @@ const Nav = () => {
             </div>
             </div>
             <div className='links'>
-            <NavLink to='/' className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} >
+            <NavLink to='/' className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-4 border-[var(--Accent)]':''}`} >
               <p>Home</p>
             </NavLink>
             {
                 role &&
                 navLinks[role].map(link=>(
-                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`} 
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-4 border-[var(--Accent)]':''}`} 
                     key={link.to} to={`${link.to}`}>
                         <p>{link.label}</p>
                     </NavLink>
@@ -80,7 +80,7 @@ const Nav = () => {
             }
             {
                 ['About','Contact'].map((link,i)=>(
-                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-2 border-[var(--Accent)]':''}`}  
+                    <NavLink className={({isActive})=>`text-[var(--Text)] ${isActive?'border-b-4 border-[var(--Accent)]':''}`}  
                     to={`/${link}`} key={i}>
                         <p>{link}</p>
                     </NavLink>

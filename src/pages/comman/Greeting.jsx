@@ -67,7 +67,8 @@ const Greeting = () => {
      </h5>
     )
     }
-    <Mainbtn text="Connect with Alumnis" className="px-4 py-2 bg-[var(--Accent)] text-white mt-0"/>
+    <Mainbtn text="Connect with Alumnis" className="px-4 py-2 bg-[var(--Accent)] text-white mt-0" 
+    onClick={()=>navigate('/alumniDirectory')}/>
   </div>
   </div>
   );

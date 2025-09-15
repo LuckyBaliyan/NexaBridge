@@ -22,6 +22,7 @@ import Apportunities from './pages/comman/Apportunities';
 import Apportunity from './pages/comman/Apportunity';
 import About from './pages/comman/About';
 import Contact from './pages/comman/Contact';
+import AlumniDirectory from './pages/comman/AlumniDirectory';
 
 const App = () => {
 
@@ -48,6 +49,7 @@ const App = () => {
             <Route path='/opportunity' element={<Apportunity/>} />
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
+            <Route path='/alumniDirectory' element={<AlumniDirectory />} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

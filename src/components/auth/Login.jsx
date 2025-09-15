@@ -130,8 +130,12 @@ const Login = () => {
         login(existingUser.role,existingUser);
         toast.success("Successfully Logged In");
 
-          const redirectPath = location.state?.from?.pathname || "/dashboard";
-          navigate(redirectPath, { replace: true });
+        const redirectFrom = location.state?.from?.pathname;
+        if (!redirectFrom || redirectFrom === "/") {
+          navigate("/dashboard", { replace: true });
+        } else {
+          navigate(redirectFrom, { replace: true });
+        }
       } else {
         toast.warn("Account not found. Please Sign Up.");
         setCurrentState("SignUp");

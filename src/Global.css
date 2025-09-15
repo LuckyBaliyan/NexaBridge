@@ -108,6 +108,9 @@ html,body{
   footer{
     @apply z-50;
   }
+  select{
+    @apply bg-white text-[var(--Text)] outline-0 ring-0 border border-[var(--Border)] cursor-pointer;
+  }
 }
 
 @layer utilities{

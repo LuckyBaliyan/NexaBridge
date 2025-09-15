@@ -15,7 +15,7 @@ import {
 
 const navLinks = {
   student: [
-    { to: "/directory", label: "Alumni Directory" },
+    { to: "/alumniDirectory", label: "Alumni Directory" },
     { to: "/events", label: "Events" },
     { to: "/mentorship", label: "Mentorship" },
     { to: "/messages", label: "Messages" },
