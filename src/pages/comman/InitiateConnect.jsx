@@ -8,6 +8,7 @@ export default function InitiateConnect() {
   const handleSubmit = (e) => {
     e.preventDefault();
     toast.success("Request sent!");
+    setMessage("");
   };
 
   return (
