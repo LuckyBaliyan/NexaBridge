@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const alumniData = [
   {
@@ -59,6 +60,8 @@ export default function AlumniDirectory() {
   const [year, setYear] = useState("");
   const [location, setLocation] = useState("");
   const [skills, setSkills] = useState("");
+
+  const navigate = useNavigate();
 
   const filteredAlumni = alumniData.filter((alum) => {
     return (
@@ -169,7 +172,7 @@ export default function AlumniDirectory() {
                 <button className="px-4 py-2 bg-[var(--Accent)] text-white text-sm rounded-lg shadow hover:opacity-90 active:scale-95 transition-transform">
                   View Profile
                 </button>
-                <button className="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded-lg shadow hover:bg-gray-300 active:scale-95 transition-transform">
+                <button onClick={()=>navigate('/connect')} className="px-4 py-2 bg-gray-200 text-gray-700 text-sm rounded-lg shadow hover:bg-gray-300 active:scale-95 transition-transform">
                   Connect
                 </button>
               </div>

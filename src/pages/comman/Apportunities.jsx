@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Mainbtn from '../../components/ui/Buttons/Mainbtn';
+import { useAuth } from '../../context/AuthProvider';
 
 const jobData = [
   {
@@ -115,6 +117,7 @@ export default function Opportunities() {
   });
 
   const navigate = useNavigate();
+  const {role} = useAuth();
 
   const filterOptions = {
     type: ['job', 'internship'],
@@ -188,6 +191,12 @@ export default function Opportunities() {
         ))}
       </div>
 
+      {/* Post Opportunity Button if alumni login */}
+      {role === 'alumni' && (
+      <div className='flex justify-center mb-8 items-center'>
+        <Mainbtn onClick={()=>navigate('/createApportunity')} text="Post an Opportunity" className='bg-[var(--Accent)] text-white'/>
+      </div>
+      )}
       {/* Job cards */}
       <div className="flex flex-col gap-6">
         {filteredJobs.map((job, index) => (

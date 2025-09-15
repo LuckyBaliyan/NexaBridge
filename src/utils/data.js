@@ -22,7 +22,7 @@ const navLinks = {
     {to: "/donations", label: "Donations"},
   ],
   alumni: [
-    { to: "/Connections", label: "Connections" },
+    { to: "/alumniDirectory", label: "Connections" },
     { to: "/opportunities", label: "Opportunities" },
     { to: "/requests", label: "Requests" },
     { to: "/events", label: "Events" },

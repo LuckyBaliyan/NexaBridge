@@ -23,6 +23,8 @@ import Apportunity from './pages/comman/Apportunity';
 import About from './pages/comman/About';
 import Contact from './pages/comman/Contact';
 import AlumniDirectory from './pages/comman/AlumniDirectory';
+import CreateApportunity from './pages/Wrappers/CreateApportunity';
+import InitiateConnect from './pages/comman/InitiateConnect';
 
 const App = () => {
 
@@ -50,6 +52,8 @@ const App = () => {
             <Route path='/about' element={<About />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/alumniDirectory' element={<AlumniDirectory />} />
+            <Route path='/createApportunity' element={<CreateApportunity />} />
+            <Route path="/connect" element={<InitiateConnect />} />
        </Route>
        <Route>
            <Route path='/login' element={<Login/>} />

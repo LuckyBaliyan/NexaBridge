@@ -52,7 +52,8 @@ export default function PostOpportunity() {
 
       {/* View Opportunities */}
       <h2 className="text-2xl font-bold mb-6">Available Opportunities</h2>
-      <div className="flex items-center gap-2 bg-white border border-gray-300 rounded-lg px-3 py-2 shadow-sm w-full md:w-2/3 mb-6">
+      <div className="flex items-center gap-2 bg-white border border-gray-300 
+      rounded-lg px-3 py-2 w-full md:w-2/3 mb-6">
         <input
           type="text"
           placeholder="Search by title or company"
@@ -78,9 +79,14 @@ export default function PostOpportunity() {
                   {opp.type}
                 </span>
               </div>
+             <div className="space-x-2 flex items-center justify-end">
+               <button className="px-4 py-2 bg-[var(--Accent)] text-white rounded-lg shadow">
+                View
+              </button>
               <button className="px-4 py-2 bg-[var(--Accent)] text-white rounded-lg shadow">
                 Apply
               </button>
+             </div>
             </div>
           ))
         ) : (

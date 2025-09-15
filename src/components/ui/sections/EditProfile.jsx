@@ -73,7 +73,7 @@ const EditProfile = () => {
             <h2 className="font-semibold text-lg mb-4">About</h2>
             <textarea
               placeholder="Write something about yourself..."
-              className="border p-2 rounded w-full h-24"
+              className="border border-[var(--Border)] p-2 rounded w-full h-24 outline-0"
             />
           </div>
 
